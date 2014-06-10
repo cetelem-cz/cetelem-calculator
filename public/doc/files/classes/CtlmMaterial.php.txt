@@ -1,0 +1,31 @@
+<?php
+
+/**
+ * Data objekt materialu
+ */
+class CtlmMaterial {
+
+	/**
+	 * id materialu v ciselniku
+	 * @var string
+	 */
+	public $id;
+
+	/**
+	 * nazev materialu
+	 * @var string
+	 */
+	public $name;
+
+	/**
+	 * Data objekt materialu
+	 * @param string $id id materialu v ciselniku
+	 * @param string $name nazev materialu
+	 */
+	public function __construct($id, $name)
+	{
+		$this->id = $id;
+		$this->name = $name;
+	}
+
+}

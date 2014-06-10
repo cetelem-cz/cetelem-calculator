@@ -1,0 +1,36 @@
+<?php 
+
+/**
+ * Uzivatelska konfigurace
+ */
+
+/**
+ * definice cisla prodejce
+ * @var string
+ */
+define ('CTLM_VDR_ID', '2044576'); // test
+//  define ('CTLM_VDR_ID', '2143675'); // production
+
+/**
+ * pojisteni zvolene klientem
+ * pokud neni definovane, zvoli se prvni z ciselniku
+ * podle toho jake ma prodejce povolene
+ */
+// define ('CTLM_POJISTENI', 'A3');
+
+/**
+ * definice prostredi
+ * 
+ * test 		= testovaci prostredi cetelem
+ * uat 			= testovaci prostredi pro prodejce
+ * production 	= produkcni prostredi
+ * dummy 		= offline prostredi (kalkulace nepocita)
+ * 
+ * @var string test|uat|production|dummy
+ */
+define ('CTLM_ENVIRONMENT', 'test');
+
+/**
+ * defaultni url, cesty a inicializace cetelem
+ */
+require 'cetelem.php';

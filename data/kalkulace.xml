@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!DOCTYPE webkalkulator SYSTEM "https://sikansen.cetelem.cz/webkalkulator.dtd">
+<webkalkulator>
+	<status>ok</status>
+	<info>		
+	</info>
+	
+	<vysledek>
+		<kodProdejce>2044576</kodProdejce>
+		<kodBaremu>100</kodBaremu>
+		<kodPojisteni>A3</kodPojisteni>		
+ 		<cenaZbozi>11000</cenaZbozi>
+ 		<primaPlatba>0</primaPlatba>
+ 		<vyseUveru>11000</vyseUveru>
+		<pocetSplatek>12</pocetSplatek>
+		<odklad>0</odklad>		
+		<vyseSplatky>1150</vyseSplatky>
+		<vyseSplatkyBezPojisteni>1113</vyseSplatkyBezPojisteni>
+		<cenaUveru>2800</cenaUveru>
+		<RPSN>44,58</RPSN>
+		<ursaz>37,44</ursaz>
+		<celkovaCastka>13356</celkovaCastka>
+		<opce enabled='0'>
+		
+		 
+	 		<vyseUveru></vyseUveru>
+			<pocetSplatek></pocetSplatek>
+			<vyseSplatky></vyseSplatky>
+			<vyseSplatkyBezPojisteni></vyseSplatkyBezPojisteni>
+			<doplatek></doplatek>
+			<cenaUveru></cenaUveru>
+			<RPSN></RPSN>
+			<ursaz></ursaz>
+			<celkovaCastka></celkovaCastka>
+			
+		</opce>
+	</vysledek>
+
+</webkalkulator>

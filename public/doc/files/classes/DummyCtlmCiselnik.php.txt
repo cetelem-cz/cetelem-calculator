@@ -1,0 +1,195 @@
+<?php
+
+require CTLM_CLASSES.'/CtlmBarem.php';
+require CTLM_CLASSES.'/CtlmLimit.php';
+require CTLM_CLASSES.'/CtlmMaterial.php';
+require CTLM_CLASSES.'/CtlmPojisteni.php';
+
+Ctlm::$ciselnik = DummyCtlmCiselnik::getInstance();
+
+class DummyCtlmCiselnik {
+	
+	/**
+	 * instance ciselniku
+	 * @var CtlmCiselnik
+	 */
+	protected static $instance = null;
+	
+	/**
+	 * ulozene baremy
+	 * @var array
+	 */
+	private $baremy = array();
+	
+	/**
+	 * ulozene limity
+	 * @var array
+	 */
+	private $limity = array();
+	
+	/**
+	 * ulozene pojisteni
+	 * @var array
+	 */
+	private $materialy = array();
+	
+	/**
+	 * ulozene pojisteni
+	 * @var array
+	 */
+	private $pojisteni = array();
+	
+	/**
+	 * vraci instanci ciselniku
+	 * @return CtlmCiselnik
+	 */
+	public static function getInstance() 
+	{
+		if (self::$instance == null)
+			self::$instance = new self();
+		return self::$instance;
+	}
+	
+	private function __construct() 
+	{
+		$this->limity = array(
+			322 => new CtlmLimit('322', 2500, 80000, 10, 15),
+			102 => new CtlmLimit('102', 2500, 400000, 5, 48),
+			104 => new CtlmLimit('104', 2500, 400000, 10, 10),
+		);
+		
+		$this->baremy = array(
+			322 => new CtlmBarem('102', 'Klasický úvěr'),
+			102 => new CtlmBarem('102', '1 % měsíčně OKAY'),
+			104 => new CtlmBarem('102', '10% + 10 x 10%'),
+		);
+		
+		foreach ($this->baremy as $id => $barem)
+			$this->baremy[$id]->limit = $this->limity[$id];
+		
+		$this->materialy = array(
+			750 => new CtlmMaterial('750', 'Výpočetní technika'),
+			751 => new CtlmMaterial('751', 'Bílá technika'),
+			752 => new CtlmMaterial('752', 'Černá technika'),
+			753 => new CtlmMaterial('753', 'Oblečení a sportovní vybavení'),
+			754 => new CtlmMaterial('754', 'Hobby a zahrada'),
+			755 => new CtlmMaterial('755', 'Dům a stavba'),
+			756 => new CtlmMaterial('756', 'Nábytek'),
+			757 => new CtlmMaterial('757', 'Služby'),
+			758 => new CtlmMaterial('758', 'Auto-moto')
+		);
+		
+		$this->pojisteni = array(
+			'A3' => new CtlmPojisteni('A3','SOUBOR STANDARD'),
+			'B1' => new CtlmPojisteni('B1','SOUBOR PREMIUM')
+		);
+	}
+	
+	/**
+	 * vrati pole definic baremu
+	 * @return CtlmBarem[]
+	 */
+	public function getBaremy() 
+	{
+		return $this->baremy;
+	}
+	
+	/**
+	 * vrati definici baremu
+	 *
+	 * @param string $id
+	 * @return CtlmBarem
+	 */
+	public function getBarem($id)
+	{
+		$baremy = $this->getBaremy();
+		if (!empty($baremy[$id]))
+			return $baremy[$id];
+	
+		return false;
+	}	
+
+	
+	/**
+	 * vrati definice limitu baremu
+	 * @return array
+	 */
+	public function getLimity() 
+	{
+		return $this->limity;
+	}
+	
+	/**
+	 * vrati definici limitu baremu
+	 * 
+	 * @param string $id
+	 * @return CtlmLimit
+	 */
+	public function getLimit($id) 
+	{
+		$limity = $this->getLimity();
+		if (!empty($limity[$id]))
+			return $limity[$id];
+		
+		return false;
+	}
+	
+	/**
+	 * vrati pole definic materialu
+	 * @return array
+	 */
+	public function getMaterialy() 
+	{
+		return $this->materialy;
+	}
+
+	/**
+	 * vrati definici materialu
+	 *
+	 * @param string $id
+	 * @return CtlmMaterial
+	 */
+	public function getMaterial($id)
+	{
+		$materialy = $this->getMaterialy();
+		if (!empty($materialy[$id]))
+			return $materialy[$id];
+	
+		return false;
+	}	
+	
+	/**
+	 * vrati pole definic pojisteni
+	 * @return array
+	 */
+	public function getPojisteniList() 
+	{
+		return $this->pojisteni;
+	}
+
+	/**
+	 * vrati definici pojisteni
+	 *
+	 * @param string $id
+	 * @return CtlmPojisteni
+	 */
+	public function getPojisteni($id)
+	{
+		$pojisteni = $this->getPojisteniList();
+		if (!empty($pojisteni[$id]))
+			return $pojisteni[$id];
+	
+		return false;
+	}
+	
+	/**
+	 * vrati baremy (a limity) ve formatu json
+	 * @return string
+	 */
+	public function getJsonBaremy() {
+		
+		return json_encode($this->getBaremy());
+	}
+	
+}
+

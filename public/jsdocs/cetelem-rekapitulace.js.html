@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" charset="utf-8">
+    <title>Kalkulačka Cetelem</title>
+    <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="http://getbootstrap.com/2.3.2/assets/css/docs.css">
+    <style>
+      body > .navbar .brand {
+        float:left;
+        text-shadow: rgba(255, 255, 255, 0.0980392) 0px 1px 0px, rgba(255, 255, 255, 0.4) 0px 0px 30px;
+        color: white;
+        margin-left:0px;
+        font-weight:normal;
+      }
+      
+      .bs-docs-sidenav.affix {
+        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.5);
+        z-index: 10;
+      }
+      
+      .bs-docs-sidenav i{
+        width: 8px;
+        height: 8px;
+        padding: 0px;
+        margin: 0px;
+        display: inline-block;
+        margin-right:0.5em;
+      }
+      
+      .bs-docs-sidenav > li > a {
+          word-wrap: break-word;
+      }
+      
+      .bs-docs-sidenav > li:first-child > a {
+        border-top-right-radius: 6px;
+        border-top-left-radius: 6px;
+      }
+      
+      code[class*="language-"],pre[class*="language-"]{color:black;text-shadow:0 1px white;font-family:Consolas,Monaco,'Andale Mono',monospace;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*="language-"]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*="language-"],pre[class*="language-"]{background:#f5f2f0}:not(pre)>code[class*="language-"]{padding:.1em;border-radius:.3em}.token.comment,.token.prolog,.token.doctype,.token.cdata{color:slategray}.token.punctuation{color:#999}.namespace{opacity:.7}.token.property,.token.tag,.token.boolean,.token.number{color:#905}.token.selector,.token.attr-name,.token.string{color:#690}.token.operator,.token.entity,.token.url,.language-css .token.string,.style .token.string{color:#a67f59;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.regex,.token.important{color:#e90}.token.important{font-weight:bold}.token.entity{cursor:help}
+      div.description {margin: 14px 0; padding-top: 14px; border-bottom:1px solid #eee; }
+      .tags {}
+      .ctx-type {
+        display:inline-block;
+        margin-right:0.5em;
+        //- float:right; margin-top:8px
+      }
+      
+      footer iframe{vertical-align:middle;}
+      
+    </style>
+  </head>
+  <body data-spy="scroll" data-target=".scrollspy">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container"><a class="brand">Doxx</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav pull-right sponsored"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <header id="overview" class="jumbotron subhead">
+      <div class="container">
+        <h1>Kalkulačka Cetelem</h1>
+        <p class="lead"></p>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="span3 bs-docs-sidebar">
+          <ul class="nav nav-list bs-docs-sidenav affix-top">
+            <li><a href="index.html">Main</a></li>
+            <li class="active"><a href="cetelem-rekapitulace.js.html">cetelem-rekapitulace.js</a></li>
+            <li><a href="cetelem.js.html">cetelem.js</a></li>
+          </ul>
+          <div class="scrollspy">
+            <ul class="nav nav-list bs-docs-sidenav affix-top">
+              <li><a href="#Ctlm"><i class="alert alert-success"></i><span>Ctlm</span></a>
+              </li>
+              <li><a href="#Rows"><i class="alert alert-success"></i><span>Rows</span></a>
+              </li>
+              <li><a href="#Baremy"><i class="alert alert-success"></i><span>Baremy</span></a>
+              </li>
+              <li><a href="#Pojisteni"><i class="alert alert-success"></i><span>Pojisteni</span></a>
+              </li>
+              <li><a href="#Splatky"><i class="alert alert-success"></i><span>Splatky</span></a>
+              </li>
+              <li><a href="#Odklad"><i class="alert alert-success"></i><span>Odklad</span></a>
+              </li>
+              <li><a href="#Platba"><i class="alert alert-success"></i><span>Platba</span></a>
+              </li>
+              <li><a href="#Helper"><i class="alert alert-success"></i><span>Helper</span></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <section id="Ctlm">
+            <h1>Ctlm</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">declaration</div><span>Ctlm</span>
+            </p>
+          </section>
+          <div class="description"><p>Obsluzna trida pro kalkulacku</p> </div>
+          <pre><code class="language-javascript">var Ctlm = {</code></pre>
+          <div class="description"><p>konfiguracni nastaveni</p>
+
+<pre><code>form    - ID formulare kalkulatoru
+ajaxUrl - URL pro komunikaci se serverovou casti
+</code></pre> </div>
+          <pre><code class="language-javascript">options: {
+		form: '#ctlm-calculator',
+		ajaxUrl: 'ajax.php',
+	},</code></pre>
+          <div class="description"><p>formular kalkulacky, nastavi se bud <br />paremetrem init funkce nebo pres selector<br />v options.form</p> </div>
+          <pre><code class="language-javascript">form: null,</code></pre>
+          <div class="description"><p>cache inputu pro rychlejsi selectovani</p> </div>
+          <pre><code class="language-javascript">inputs: null,</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>jquery</td>
+                <td>form</td>
+                <td>objekt formulare</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>inicializace kalkulatoru<br />bindnuti na submit event formulare</p> </div>
+          <pre><code class="language-javascript">init: function(form) 
+	{
+		this.form = form || $(this.options.form);
+		
+		$('.ctlm-opce').hide();
+		
+		// cache inputu
+		this.initInputs();
+		
+		// inicializace jednotlivych komponent formulare
+		this.Baremy.init();
+		this.Pojisteni.init();
+		this.Splatky.init();
+		this.Odklad.init();
+		this.Platba.init();
+		
+		Ctlm.Rows.init();
+		
+		// vypocet kalkulace
+		this.calculate();
+		
+	},</code></pre>
+          <div class="description"><p>ulozi do cache pouzivane inputy</p> </div>
+          <pre><code class="language-javascript">initInputs: function() 
+	{
+		this.inputs = {
+			kodBaremu: this.form.find('select[name~=&quot;kodBaremu&quot;]'),
+			kodPojisteni: this.form.find('select[name~=&quot;kodPojisteni&quot;]'),
+			cenaZbozi: this.form.find('input[name~=&quot;cenaZbozi&quot;]'),
+			primaPlatba: this.form.find('input[name~=&quot;primaPlatba&quot;]'),
+			pocetSplatek: this.form.find('input[name~=&quot;pocetSplatek&quot;]'),
+			vyseSplatky: this.form.find('input[name~=&quot;vyseSplatky&quot;]'),
+			odklad: this.form.find('select[name~=&quot;odklad&quot;]'),
+		};
+	},</code></pre>
+          <div class="description"><p>ajax vypocet kalkulatoru</p> </div>
+          <pre><code class="language-javascript">calculate: function() 
+	{
+		var url = Ctlm.options.ajaxUrl;
+		var data = Ctlm.form.serialize();
+		
+		// disablovani komponent
+		Ctlm.disable();
+		
+		// ajax dotaz na server
+		$.post(url, data + '&amp;do=calculate', Ctlm.showCalculationResult).fail(Ctlm.showCalculationFail);
+		
+		return false;
+	},</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td>data</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>vraceni vysledku kalkulace</p> </div>
+          <pre><code class="language-javascript">showCalculationResult: function(data) 
+	{
+		
+		// message pri info hlasce
+		if (data.info != '') {
+			$('.ctlm-message span').html(data.info);
+			$('.ctlm-message').slideDown('slow');
+			window.setTimeout(function() {
+				$('.ctlm-message').slideUp('fast');
+			}, 4000);
+		}
+		
+		// enablovani vsech komponent
+		Ctlm.enable();
+		
+		// reinicializace komponent podle zvolenych hodnot
+		Ctlm.form.find('.ctlm-splatka-value').html(Ctlm.Helper.money(data.vyseSplatkyBezPojisteni));
+		
+		Ctlm.inputs.pocetSplatek.val(data.pocetSplatek);
+		Ctlm.Splatky.setLimit();
+		
+		Ctlm.inputs.primaPlatba.val(data.primaPlatba);
+		Ctlm.Platba.setLimit();
+		
+		Ctlm.inputs.odklad.val(data.odklad);
+		Ctlm.Odklad.setLimit();
+		
+		// nastaveni hodnot do rekapitulace
+		Ctlm.setResult(data, '.ctlm-result-');
+		
+		// nastaveni hodnot rekapitulace opce
+		if (data.opce == null) {
+			Ctlm.form.find('.ctlm-opce').hide();
+		} else {
+			Ctlm.setResult(data.opce, '.ctlm-opce-');
+			Ctlm.form.find('.ctlm-opce').show();
+		}
+		
+	},</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>ve</td>
+                <td>data</td>
+                <td>formatu objektu CtlmVysledek</td>
+              </tr>
+              <tr>
+                <td>prefix</td>
+                <td>prefix</td>
+                <td>css selectoru (.ctlm-result- nebo .ctlm-opce-)</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>nastavi hodnoty vypoctu do rekapitulace</p> </div>
+          <pre><code class="language-javascript">setResult: function(data, prefix) {
+		var money = ['vyseUveru', 'vyseSplatky', 'cenaUveru', 'vyseSplatkyBezPojisteni', 'celkovaCastka', 'doplatek'];
+		for(key in money)
+			Ctlm.form.find(prefix + money[key]).html(Ctlm.Helper.money(data[money[key]]));
+		
+		Ctlm.form.find(prefix + 'ursaz').html(Ctlm.Helper.percent(data['ursaz'], 2));
+		Ctlm.form.find(prefix + 'RPSN').html(Ctlm.Helper.percent(data['RPSN'], 2));
+		Ctlm.form.find(prefix + 'pocetSplatek').html(data['pocetSplatek']);
+	},</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td>data</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>obsluha chyby pri volani kalkulace</p> </div>
+          <pre><code class="language-javascript">showCalculationFail: function(data) 
+	{
+		Ctlm.enable();
+		alert('Volani kalkulatoru selhalo.');
+	},</code></pre>
+          <div class="description"><p>vypnuti vsech komponent pri ajax volani</p> </div>
+          <pre><code class="language-javascript">disable: function() 
+	{
+		Ctlm.Baremy.disable();
+		Ctlm.Splatky.disable();
+		Ctlm.Odklad.disable();
+		Ctlm.Platba.disable();
+		Ctlm.Pojisteni.disable();
+		Ctlm.Rows.disable();
+		Ctlm.form.find('.ctlm-button').addClass('ctlm-loading');
+	},</code></pre>
+          <div class="description"><p>zapnuti komponent po ajax volani</p> </div>
+          <pre><code class="language-javascript">enable: function()
+	{
+		Ctlm.Baremy.enable();
+		Ctlm.Splatky.enable();
+		Ctlm.Odklad.enable();
+		Ctlm.Platba.enable();
+		Ctlm.Pojisteni.enable();
+		Ctlm.Rows.enable();
+		Ctlm.form.find('.ctlm-button').removeClass('ctlm-loading');
+	}
+	
+};</code></pre>
+          <section id="Rows">
+            <h1>Rows</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>Ctlm.Rows</span>
+            </p>
+          </section>
+          <div class="description"><p>komponenta editace radku</p> </div>
+          <pre><code class="language-javascript">Ctlm.Rows = {
+	
+	init: function() 
+	{
+		$('.ctlm-row-edit').hide();
+		$('button.next').on('click', this.next);
+	},</code></pre>
+          <div class="description"><p>pri kliknuti na tlacitko upravit</p> </div>
+          <pre><code class="language-javascript">next: function()
+	{
+		var section = $(this).data('edit');
+		Ctlm.Rows.disable();
+		$('.ctlm-row.' + section + ' .ctlm-row-edit button.prev').removeAttr('disabled');
+		$('.ctlm-row.' + section + ' .ctlm-row-static').hide();
+		$('.ctlm-row.' + section + ' .ctlm-row-edit').show();
+		Ctlm.form.find('.ctlm-button').addClass('ctlm-disabled');
+	},</code></pre>
+          <div class="description"><p>pri kliknuti na tlacito pouzit</p> </div>
+          <pre><code class="language-javascript">prev: function(button)
+	{
+		var section = $(button).data('edit');
+		Ctlm.Rows.enable();
+		$('.ctlm-row.' + section + ' .ctlm-row-static').show();
+		$('.ctlm-row.' + section + ' .ctlm-row-edit').hide();
+		Ctlm.form.find('.ctlm-button').removeClass('ctlm-disabled');
+	},</code></pre>
+          <div class="description"><p>vypnout tlacitka</p> </div>
+          <pre><code class="language-javascript">disable: function()
+	{
+		$('button.next, button.prev').attr('disabled', 'disabled');
+	},</code></pre>
+          <div class="description"><p>zapnout tlacitka</p> </div>
+          <pre><code class="language-javascript">enable: function()
+	{
+		$('button.next, button.prev').removeAttr('disabled');
+	}
+		
+};</code></pre>
+          <section id="Baremy">
+            <h1>Baremy</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>Ctlm.Baremy</span>
+            </p>
+          </section>
+          <div class="description"><p>selectbox pro vyber baremu</p> </div>
+          <pre><code class="language-javascript">Ctlm.Baremy = {</code></pre>
+          <div class="description"><p>seznam baremu a limitu<br />bud se inicializuji pres Cetelem.Baremy.set()<br />nebo si je automaticky dotahne ajaxem</p> </div>
+          <pre><code class="language-javascript">baremy: null,</code></pre>
+          <div class="description"><p>inicializace komponenty</p> </div>
+          <pre><code class="language-javascript">init: function() 
+	{
+		if (this.baremy == null)
+			this.load();
+		
+		// pri zmene baremu
+		
+		Ctlm.inputs.kodBaremu.on('change', this.change);
+		$('.ctlm-barem button.prev').on('click', this.change);
+		
+		// inicializace selectBoxIt custom selectu
+		Ctlm.inputs.kodBaremu.selectBoxIt({
+			autoWidth: false
+		});
+	},</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>seznam</td>
+                <td>baremy</td>
+                <td>baremu</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>nastavi baremy a limity</p> </div>
+          <pre><code class="language-javascript">set: function(baremy) 
+	{
+		Ctlm.Baremy.baremy = baremy;
+	},</code></pre>
+          <div class="description"><p>vrati aktualne vybrany barem</p> </div>
+          <pre><code class="language-javascript">get: function() 
+	{
+		var kodBaremu = Ctlm.inputs.kodBaremu.val();
+		return this.baremy[kodBaremu];
+	},</code></pre>
+          <div class="description"><p>vrati limity aktualne vybraneho baremu</p> </div>
+          <pre><code class="language-javascript">getLimit: function() 
+	{
+		return this.get().limit;
+	},</code></pre>
+          <div class="description"><p>nacte baremy a limity pres ajax</p> </div>
+          <pre><code class="language-javascript">load: function() 
+	{
+		var url = Ctlm.options.ajaxUrl;
+		$.post(url, {'do': 'getBaremy'}, Ctlm.Baremy.set);
+	},</code></pre>
+          <div class="description"><p>pri zmene baremu</p> </div>
+          <pre><code class="language-javascript">change: function() 
+	{
+		Ctlm.inputs.pocetSplatek.val(24);
+		Ctlm.Splatky.setLimit();
+		
+		Ctlm.inputs.odklad.val(0);
+		Ctlm.Odklad.setLimit();
+		
+		Ctlm.inputs.primaPlatba.val(0);
+		Ctlm.Platba.setLimit();
+		
+		Ctlm.Rows.prev($(this).closest('.ctlm-row').find('button.prev'));
+		$('.ctlm-barem .ctlm-value').html(Ctlm.Baremy.get().name);
+		
+		Ctlm.calculate();
+	},</code></pre>
+          <div class="description"><p>disablovani selectu pri ajaxu</p> </div>
+          <pre><code class="language-javascript">disable: function() 
+	{
+		Ctlm.inputs.kodBaremu.data(&quot;selectBox-selectBoxIt&quot;).disable();
+	},</code></pre>
+          <div class="description"><p>enablovani selectu po ajaxu</p> </div>
+          <pre><code class="language-javascript">enable: function()
+	{
+		Ctlm.inputs.kodBaremu.data(&quot;selectBox-selectBoxIt&quot;).enable();
+	}
+	
+};</code></pre>
+          <section id="Pojisteni">
+            <h1>Pojisteni</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>Ctlm.Pojisteni</span>
+            </p>
+          </section>
+          <div class="description"><p>selectbox pro vyber pojisteni</p> </div>
+          <pre><code class="language-javascript">Ctlm.Pojisteni = {</code></pre>
+          <div class="description"><p>seznam pojisteni<br />bud se inicializuji pres Cetelem.Pojisteni.set()<br />nebo si je automaticky dotahne ajaxem</p> </div>
+          <pre><code class="language-javascript">pojisteni: null,</code></pre>
+          <div class="description"><p>inicializace komponenty</p> </div>
+          <pre><code class="language-javascript">init: function() 
+	{
+		if (this.pojisteni == null)
+			this.load();
+		
+		// pri zmene pojisteni
+		$('.ctlm-pojisteni button.prev').on('click', this.change);
+		
+		// inicializace selectBoxIt custom selectu
+		Ctlm.inputs.kodPojisteni.selectBoxIt({
+			autoWidth: false
+		}).on('moveDown moveUp open', function(e) {
+			var select = e.target;
+			var selectIt = $(select).data(&quot;selectBox-selectBoxIt&quot;);
+			var value = select.options[selectIt.currentFocus].value;
+			Ctlm.Pojisteni.showHelp(value);
+		}).on('close', function(e) {
+			var holder = Ctlm.inputs.kodPojisteni.closest('.ctlm-value-wrapper');
+			holder.find('.help').remove();
+		});
+		
+		// zobrazeni napovedy k pojisteni (v selectu)
+		$(document).on('mouseover', '.ctlm-pojisteni li.selectboxit-option', function(e) {
+			var element = e.target;
+			var value = $(element).parent().attr('data-val');
+			Ctlm.Pojisteni.showHelp(value);
+		});
+		
+		// zobrazeni/skryti napovedy zvoleneho pojisteni
+		$('.ctlm-pojisteni .ctlm-row-static .ctlm-value-wrapper').on('mouseenter', function(e) {
+			var value = Ctlm.inputs.kodPojisteni.val();
+			Ctlm.Pojisteni.showHelp(value, $(this));
+		}).on('mouseleave', function(e) {
+			Ctlm.Pojisteni.hideHelp($(this));
+		});
+		
+		// pokud je mene nez 2 pojisteni, neni potreba tlacitko upravit
+		var count = $.map(this.pojisteni, function(n, i) { return i; }).length;
+		if (count &lt;= 1) {
+			this.lock();
+		}
+	},</code></pre>
+          <div class="description"><p>zobrazi bublinu s napovedou</p> </div>
+          <pre><code class="language-javascript">showHelp: function(pojisteni, holder) {
+		holder = holder || Ctlm.inputs.kodPojisteni.closest('.ctlm-value-wrapper');
+		holder.find('.help').remove();
+		var help = $('&lt;div /&gt;').addClass('help').hide().html(Ctlm.Pojisteni.pojisteni[pojisteni].napoveda);
+		holder.append(help);
+		help.fadeIn('fast');
+	},</code></pre>
+          <div class="description"><p>skryje bublinu s napovedou</p> </div>
+          <pre><code class="language-javascript">hideHelp: function(holder) {
+		holder = holder || Ctlm.inputs.kodPojisteni.closest('.ctlm-value-wrapper');
+		holder.find('.help').remove();
+	},</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>seznam</td>
+                <td>pojisteni</td>
+                <td>pojisteni</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>nastavi seznam pojisteni</p> </div>
+          <pre><code class="language-javascript">set: function(pojisteni) 
+	{
+		Ctlm.Pojisteni.pojisteni = pojisteni;
+	},</code></pre>
+          <div class="description"><p>vrati aktualne vybrany pojisteni</p> </div>
+          <pre><code class="language-javascript">get: function() 
+	{
+		var kodPojisteni = Ctlm.inputs.kodPojisteni.val();
+		return this.pojisteni[kodPojisteni];
+	},</code></pre>
+          <div class="description"><p>nacte pojisteni pres ajax</p> </div>
+          <pre><code class="language-javascript">load: function() 
+	{
+		var url = Ctlm.options.ajaxUrl;
+		$.post(url, {'do': 'getPojisteni'}, Ctlm.Pojisteni.set);
+	},</code></pre>
+          <div class="description"><p>pri zmene pojisteni</p> </div>
+          <pre><code class="language-javascript">change: function() 
+	{
+		Ctlm.Rows.prev(this);
+		$('.ctlm-pojisteni .ctlm-value').html(Ctlm.Pojisteni.get().name);
+		
+		Ctlm.calculate();
+	},</code></pre>
+          <div class="description"><p>disablovani selectu pri ajaxu</p> </div>
+          <pre><code class="language-javascript">disable: function() 
+	{
+		Ctlm.inputs.kodPojisteni.data(&quot;selectBox-selectBoxIt&quot;).disable();
+	},</code></pre>
+          <div class="description"><p>enablovani selectu po ajaxu</p> </div>
+          <pre><code class="language-javascript">enable: function()
+	{
+		Ctlm.inputs.kodPojisteni.data(&quot;selectBox-selectBoxIt&quot;).enable();
+	},</code></pre>
+          <div class="description"><p>zamknuti slideru pri variante pocet splatek min = max</p> </div>
+          <pre><code class="language-javascript">lock: function() {
+		$('.ctlm-pojisteni button.next').hide();
+	},</code></pre>
+          <div class="description"><p>odemknuti slideru</p> </div>
+          <pre><code class="language-javascript">unlock: function() {
+		$('.ctlm-pojisteni button.next').show();
+	},
+	
+};</code></pre>
+          <section id="Splatky">
+            <h1>Splatky</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>Ctlm.Splatky</span>
+            </p>
+          </section>
+          <div class="description"><p>obsluhy inputu splatek a slideru splatek</p> </div>
+          <pre><code class="language-javascript">Ctlm.Splatky = {</code></pre>
+          <div class="description"><p>inicializace komponenty</p> </div>
+          <pre><code class="language-javascript">init: function() 
+	{
+		// obsluha zmeny inputu
+		$('.ctlm-splatky button.prev').on('click', this.change);
+		
+		//nastavi limity splatek
+		this.setLimit();
+	},</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>kodBaremu</td>
+                <td>kodBaremu</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>nastavuje limity poctu splatek</p> </div>
+          <pre><code class="language-javascript">setLimit: function() 
+	{
+		var min = Ctlm.Baremy.getLimit().minpocspl;
+		var max = Ctlm.Baremy.getLimit().maxpocspl;
+		
+		// pokud min a max jsou stejne, zamknout komponentu
+		if (min == max) {
+			Ctlm.Splatky.lock();
+		} else {
+			Ctlm.Splatky.unlock();
+		}
+		
+		// nastavit limitni hodnoutoy pro napovedu
+		Ctlm.form.find('.ctlm-splatky-min').html(min);
+		Ctlm.form.find('.ctlm-splatky-max').html(max);
+		
+		// nastavit limitni hodnoty pro slider
+		// kontrola jestli aktualni hodnota je v rozmezi limitu
+		var value = Ctlm.inputs.pocetSplatek.val();
+		if (value &lt; min) {
+			value = min;
+			Ctlm.inputs.pocetSplatek.val(min);
+		}
+		if (value &gt; max) {
+			value = max;
+			Ctlm.inputs.pocetSplatek.val(max);
+		}
+		
+	},</code></pre>
+          <div class="description"><p>pri zmene inputu splatek refreshne slider</p> </div>
+          <pre><code class="language-javascript">change: function() 
+	{
+		Ctlm.Rows.prev(this);
+		Ctlm.Splatky.setLimit();
+		Ctlm.calculate();
+	},</code></pre>
+          <div class="description"><p>disablovani slideru a inputu pri ajaxu</p> </div>
+          <pre><code class="language-javascript">disable: function() 
+	{
+		Ctlm.inputs.pocetSplatek.attr('disabled', 'disabled');
+	},</code></pre>
+          <div class="description"><p>enablovani slideru po ajaxu</p> </div>
+          <pre><code class="language-javascript">enable: function()
+	{
+		Ctlm.inputs.pocetSplatek.removeAttr('disabled');
+	},</code></pre>
+          <div class="description"><p>zamknuti slideru pri variante pocet splatek min = max</p> </div>
+          <pre><code class="language-javascript">lock: function() {
+		$('.ctlm-splatky button.next').hide();
+	},</code></pre>
+          <div class="description"><p>odemknuti slideru</p> </div>
+          <pre><code class="language-javascript">unlock: function() {
+		$('.ctlm-splatky button.next').show();
+	}
+	
+};</code></pre>
+          <section id="Odklad">
+            <h1>Odklad</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>Ctlm.Odklad</span>
+            </p>
+          </section>
+          <div class="description"><p>obsluhy inputu odkladu a slideru odkladu splatek</p> </div>
+          <pre><code class="language-javascript">Ctlm.Odklad = {</code></pre>
+          <div class="description"><p>inicializace komponenty</p> </div>
+          <pre><code class="language-javascript">init: function() 
+	{
+		// obsluha zmeny inputu
+		$('.ctlm-odklad button.prev').on('click', this.onChange);
+		
+		// inicializace selectBoxIt custom selectu
+		Ctlm.inputs.odklad.selectBoxIt({
+			autoWidth: false
+		});
+		
+		//nastavi limity splatek
+		this.setLimit();
+	},</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>kodBaremu</td>
+                <td>kodBaremu</td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>nastavuje limity poctu splatek</p> </div>
+          <pre><code class="language-javascript">setLimit: function() 
+	{
+		// definice odkladu v limitech baremu
+		var minodklad = Ctlm.Baremy.getLimit().minodklad;
+		var maxodklad = Ctlm.Baremy.getLimit().maxodklad;
+		
+		// pokud min a max jsou stejne, zamknout komponentu
+		if (minodklad == maxodklad) {
+			Ctlm.Odklad.lock();
+			// pokud je null komponentu uplne schovat
+			if (minodklad == null) {
+				Ctlm.Odklad.hide();
+			} else {
+				Ctlm.Odklad.show();
+			}
+		} else {
+			Ctlm.Odklad.unlock();
+			Ctlm.Odklad.show();
+		}
+
+		// mozne hodnoty odkladu
+		var values = Ctlm.Odklad.getValues();
+		
+		// aktualni hodnota
+		var value = Ctlm.inputs.odklad.val();
+		
+		// naplni do selectboxu mozne hodnoty
+		var selectBox = Ctlm.inputs.odklad.selectBoxIt().data(&quot;selectBox-selectBoxIt&quot;);
+		selectBox.remove();
+		$(values).each(function(key, value) {
+			switch (value) {
+				case 0:
+					selectBox.add({value: value, text: 'bez odkladu'});
+					break;
+				case 1:
+					selectBox.add({value: value, text: value + ' měsíc'});
+					break;
+				case 2:
+				case 3:
+				case 4:
+					selectBox.add({value: value, text: value + ' měsíce'});
+					break;
+				default:
+					selectBox.add({value: value, text: value + ' měsíců'});
+					break;
+			}
+		});
+		
+		if ($.inArray(parseInt(value), values) == -1) {
+			value = values[0];
+		}
+		selectBox.selectOption(value.toString());
+		
+		// nastavi text komponenty
+		switch (parseInt(value)) {
+			case 0:
+				$('.ctlm-odklad .ctlm-value').html('bez odkladu');
+				break;
+			case 1:
+				$('.ctlm-odklad .ctlm-value').html(value + ' měsíc');
+				break;
+			case 2:
+			case 3:
+			case 4:
+				$('.ctlm-odklad .ctlm-value').html(value + ' měsíce');
+				break;
+			default:
+				$('.ctlm-odklad .ctlm-value').html(value + ' měsíců');
+				break;
+		}
+	},</code></pre>
+          <div class="description"><p>vrati mozne hodnoty odkladu</p> </div>
+          <pre><code class="language-javascript">getValues: function() {
+		var min = Ctlm.Baremy.getLimit().minodklad;
+		var max = Ctlm.Baremy.getLimit().maxodklad;
+		var required = Ctlm.Baremy.getLimit().reqodklad;
+		
+		var values = [];
+		if (required == 0) {
+			values.push(0);
+		}
+		for (var i=min; i&lt;=max; i++)
+			values.push(i);
+		
+		return values;
+	},</code></pre>
+          <div class="description"><p>callback pri zmene odkladu</p> </div>
+          <pre><code class="language-javascript">changeValue: function(value)
+	{
+		Ctlm.inputs.odklad.val(Ctlm.Odklad.getValues()[value]);
+	},</code></pre>
+          <div class="description"><p>pri zmene inputu splatek refreshne slider</p> </div>
+          <pre><code class="language-javascript">onChange: function() 
+	{
+		Ctlm.Rows.prev(this);
+		Ctlm.Odklad.setLimit();
+		Ctlm.calculate();
+	},</code></pre>
+          <div class="description"><p>disablovani slideru a inputu pri ajaxu</p> </div>
+          <pre><code class="language-javascript">disable: function() 
+	{
+		Ctlm.inputs.odklad.attr('disabled', 'disabled');
+	},</code></pre>
+          <div class="description"><p>enablovani slideru po ajaxu</p> </div>
+          <pre><code class="language-javascript">enable: function()
+	{
+		Ctlm.inputs.odklad.removeAttr('disabled');
+	},</code></pre>
+          <div class="description"><p>zamknuti slideru pri variante pocet splatek min = max</p> </div>
+          <pre><code class="language-javascript">lock: function() {
+		$('.ctlm-odklad button.next').hide();
+	},</code></pre>
+          <div class="description"><p>odemknuti slideru</p> </div>
+          <pre><code class="language-javascript">unlock: function() {
+		$('.ctlm-odklad button.next').show();
+	},</code></pre>
+          <div class="description"><p>pokud odklad nelze nastavit, schova pole a slider</p> </div>
+          <pre><code class="language-javascript">hide: function() {
+		$('.ctlm-odklad-wrapper').hide();
+	},</code></pre>
+          <div class="description"><p>zobrazi schovane pole a slider pro odklad</p> </div>
+          <pre><code class="language-javascript">show: function() {
+		$('.ctlm-odklad-wrapper').show();
+	}
+};</code></pre>
+          <section id="Platba">
+            <h1>Platba</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>Ctlm.Platba</span>
+            </p>
+          </section>
+          <div class="description"><p>komponenta pro primou platbu</p> </div>
+          <pre><code class="language-javascript">Ctlm.Platba = {</code></pre>
+          <div class="description"><p>inicializace komponenty</p> </div>
+          <pre><code class="language-javascript">init: function() 
+	{
+		// obsluha zmeny inputu
+		$('.ctlm-platba button.prev').on('click', this.onChange);
+		
+		// nastaveni limitu
+		this.setLimit();
+	},</code></pre>
+          <div class="description"><p>nastaveni limitu spineru (podle limitu baremu)</p> </div>
+          <pre><code class="language-javascript">setLimit: function() 
+	{
+		
+		var type = Ctlm.Baremy.get().platba;
+		var platbaValue = Ctlm.Baremy.get().platbaValue;
+		var cenaZbozi = Ctlm.inputs.cenaZbozi.val();
+		var uverMin = Ctlm.Baremy.getLimit().minuver;
+		
+		var min = 0;
+		var max = 0;
+		
+		switch (type) {
+			default:
+			case 'free':
+				min = 0;
+				max = cenaZbozi - uverMin;
+				Ctlm.Platba.unlock();
+				break;
+				
+			case 'fixed':
+				min = max =  platbaValue;
+				Ctlm.Platba.lock();
+				break;
+				
+			case 'percent':
+				min = max = (cenaZbozi / 100) * platbaValue;
+				Ctlm.Platba.lock();
+				break;
+		}
+		
+		Ctlm.form.find('.ctlm-platba-min').html(Ctlm.Helper.money(min));
+		Ctlm.form.find('.ctlm-platba-max').html(Ctlm.Helper.money(max));
+		
+		var value = Ctlm.inputs.primaPlatba.val();
+		if (value &lt; min) {
+			Ctlm.inputs.primaPlatba.val(min);
+		}
+		if (value &gt; max) {
+			Ctlm.inputs.primaPlatba.val(max);
+		}
+		$('.ctlm-result-primaPlatba').html(Ctlm.Helper.money(value));
+	},</code></pre>
+          <div class="description"><p>pri zmene inputu nebo pouziti tlacitek + -</p> </div>
+          <pre><code class="language-javascript">onChange: function()
+	{
+		Ctlm.Rows.prev(this);
+		Ctlm.Platba.setLimit();
+		Ctlm.calculate();
+	},</code></pre>
+          <div class="description"><p>disablovani spinneru pri ajaxu</p> </div>
+          <pre><code class="language-javascript">disable: function() 
+	{
+		Ctlm.inputs.primaPlatba.attr('readonly', 'readonly');
+	},</code></pre>
+          <div class="description"><p>enablovani spinneru po ajaxu</p> </div>
+          <pre><code class="language-javascript">enable: function()
+	{
+		Ctlm.inputs.primaPlatba.removeAttr('readonly');
+	},</code></pre>
+          <div class="description"><p>zamknuti spinneru</p> </div>
+          <pre><code class="language-javascript">lock: function() 
+	{
+		$('.ctlm-platba button.next').hide();
+		
+	},</code></pre>
+          <div class="description"><p>odemknuti spinneru</p> </div>
+          <pre><code class="language-javascript">unlock: function()
+	{
+		$('.ctlm-platba button.next').show();
+	},
+		
+};</code></pre>
+          <section id="Helper">
+            <h1>Helper</h1>
+            <h5 class="subheader"></h5>
+            <p>
+              <div class="label label-success radius ctx-type">property</div><span>Ctlm.Helper</span>
+            </p>
+          </section>
+          <div class="description"><p>helper funkce</p> </div>
+          <pre><code class="language-javascript">Ctlm.Helper = {</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>cislo</td>
+                <td>number</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>pocet</td>
+                <td>decimals</td>
+                <td>desetinnych mist</td>
+              </tr>
+              <tr>
+                <td>oddelovac</td>
+                <td>dec_point</td>
+                <td>pro desetinnou carku</td>
+              </tr>
+              <tr>
+                <td>oddelovac</td>
+                <td>thousands_sep</td>
+                <td>pro tisice</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>ekvivalent php fce number_format</p> </div>
+          <pre><code class="language-javascript">number_format: function(number, decimals, dec_point, thousands_sep) 
+	{
+		number = (number + '').replace(/[^0-9+\-Ee.]/g, '');
+		var n = !isFinite(+number) ? 0 : +number, prec = !isFinite(+decimals) ? 0
+				: Math.abs(decimals), sep = (typeof thousands_sep === 'undefined') ? ','
+				: thousands_sep, dec = (typeof dec_point === 'undefined') ? '.'
+				: dec_point, s = '', toFixedFix = function(n, prec) {
+			var k = Math.pow(10, prec);
+			return '' + (Math.round(n * k) / k).toFixed(prec);
+		};
+		// Fix for IE parseFloat(0.55).toFixed(0) = 0;
+		s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+		if (s[0].length &gt; 3) {
+			s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+		}
+		if ((s[1] || '').length &lt; prec) {
+			s[1] = s[1] || '';
+			s[1] += new Array(prec - s[1].length + 1).join('0');
+		}
+		return s.join(dec);
+	},</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>cislo</td>
+                <td>number</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>pocet</td>
+                <td>decimals</td>
+                <td>desetinnych mist</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>vrati cislo naformatovane jako penize v Kc</p> </div>
+          <pre><code class="language-javascript">money: function(number, decimals) 
+	{
+		decimals = decimals || 0;
+		return this.number_format(number, decimals, ',', '&amp;nbsp;') + '&amp;nbsp;Kč';
+	},</code></pre>
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th style="width:20%">Option name</th>
+                <th style="width:20%">Type</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>cislo</td>
+                <td>number</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>pocet</td>
+                <td>decimals</td>
+                <td>desetinnych mist</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="description"><p>vrati cislo naformatovane jako procenta</p> </div>
+          <pre><code class="language-javascript">percent: function(number, decimals) 
+	{
+		decimals = decimals || 0;
+		return this.number_format(number, decimals, ',', '&amp;nbsp;') + '&amp;nbsp;%';
+	}
+};</code></pre>
+          <div class="description"><p>inicializace cetelem kalkulacky</p> </div>
+          <pre><code class="language-javascript">$(function() {
+	Ctlm.init();
+});</code></pre>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <p>Documentation generated with<a href="https://github.com/FGRibreau/doxx">Doxx</a>created by<a href="https://twitter.com/FGRibreau" data-show-count="false" class="twitter-follow-button">Francois-Guillaume Ribreau</a></p>
+        <p>Doxx is sponsored by<a href="http://bringr.net/?btt" title="Outil d'analyse des réseaux sociaux" class="bringr">Bringr</a>and<a href="https://redsmin.com/?btt" title="Full Redis GUI" class="redsmin">Redsmin</a></p>
+        <p>Theme borrowed from Twitter Bootstrap</p>
+      </div>
+    </footer>
+    <script src="http://platform.twitter.com/widgets.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script src="http://leaverou.github.com/prefixfree/prefixfree.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-transition.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-scrollspy.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-dropdown.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-collapse.js"></script>
+    <script src="http://getbootstrap.com/2.3.2/assets/js/bootstrap-affix.js"></script>
+    <script>
+      /**
+       * Prism: Lightweight, robust, elegant syntax highlighting
+       * MIT license http://www.opensource.org/licenses/mit-license.php/
+       * @author Lea Verou http://lea.verou.me
+       */(function(){var e=/\blang(?:uage)?-(?!\*)(\w+)\b/i,t=self.Prism={util:{type:function(e){return Object.prototype.toString.call(e).match(/\[object (\w+)\]/)[1]},clone:function(e){var n=t.util.type(e);switch(n){case"Object":var r={};for(var i in e)e.hasOwnProperty(i)&&(r[i]=t.util.clone(e[i]));return r;case"Array":return e.slice()}return e}},languages:{extend:function(e,n){var r=t.util.clone(t.languages[e]);for(var i in n)r[i]=n[i];return r},insertBefore:function(e,n,r,i){i=i||t.languages;var s=i[e],o={};for(var u in s)if(s.hasOwnProperty(u)){if(u==n)for(var a in r)r.hasOwnProperty(a)&&(o[a]=r[a]);o[u]=s[u]}return i[e]=o},DFS:function(e,n){for(var r in e){n.call(e,r,e[r]);t.util.type(e)==="Object"&&t.languages.DFS(e[r],n)}}},highlightAll:function(e,n){var r=document.querySelectorAll('code[class*="language-"], [class*="language-"] code, code[class*="lang-"], [class*="lang-"] code');for(var i=0,s;s=r[i++];)t.highlightElement(s,e===!0,n)},highlightElement:function(r,i,s){var o,u,a=r;while(a&&!e.test(a.className))a=a.parentNode;if(a){o=(a.className.match(e)||[,""])[1];u=t.languages[o]}if(!u)return;r.className=r.className.replace(e,"").replace(/\s+/g," ")+" language-"+o;a=r.parentNode;/pre/i.test(a.nodeName)&&(a.className=a.className.replace(e,"").replace(/\s+/g," ")+" language-"+o);var f=r.textContent;if(!f)return;f=f.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/\u00a0/g," ");var l={element:r,language:o,grammar:u,code:f};t.hooks.run("before-highlight",l);if(i&&self.Worker){var c=new Worker(t.filename);c.onmessage=function(e){l.highlightedCode=n.stringify(JSON.parse(e.data));l.element.innerHTML=l.highlightedCode;s&&s.call(l.element);t.hooks.run("after-highlight",l)};c.postMessage(JSON.stringify({language:l.language,code:l.code}))}else{l.highlightedCode=t.highlight(l.code,l.grammar);l.element.innerHTML=l.highlightedCode;s&&s.call(r);t.hooks.run("after-highlight",l)}},highlight:function(e,r){return n.stringify(t.tokenize(e,r))},tokenize:function(e,n){var r=t.Token,i=[e],s=n.rest;if(s){for(var o in s)n[o]=s[o];delete n.rest}e:for(var o in n){if(!n.hasOwnProperty(o)||!n[o])continue;var u=n[o],a=u.inside,f=!!u.lookbehind||0;u=u.pattern||u;for(var l=0;l<i.length;l++){var c=i[l];if(i.length>e.length)break e;if(c instanceof r)continue;u.lastIndex=0;var h=u.exec(c);if(h){f&&(f=h[1].length);var p=h.index-1+f,h=h[0].slice(f),d=h.length,v=p+d,m=c.slice(0,p+1),g=c.slice(v+1),y=[l,1];m&&y.push(m);var b=new r(o,a?t.tokenize(h,a):h);y.push(b);g&&y.push(g);Array.prototype.splice.apply(i,y)}}}return i},hooks:{all:{},add:function(e,n){var r=t.hooks.all;r[e]=r[e]||[];r[e].push(n)},run:function(e,n){var r=t.hooks.all[e];if(!r||!r.length)return;for(var i=0,s;s=r[i++];)s(n)}}},n=t.Token=function(e,t){this.type=e;this.content=t};n.stringify=function(e){if(typeof e=="string")return e;if(Object.prototype.toString.call(e)=="[object Array]"){for(var r=0;r<e.length;r++)e[r]=n.stringify(e[r]);return e.join("")}var i={type:e.type,content:n.stringify(e.content),tag:"span",classes:["token",e.type],attributes:{}};i.type=="comment"&&(i.attributes.spellcheck="true");t.hooks.run("wrap",i);var s="";for(var o in i.attributes)s+=o+'="'+(i.attributes[o]||"")+'"';return"<"+i.tag+' class="'+i.classes.join(" ")+'" '+s+">"+i.content+"</"+i.tag+">"};if(!self.document){self.addEventListener("message",function(e){var n=JSON.parse(e.data),r=n.language,i=n.code;self.postMessage(JSON.stringify(t.tokenize(i,t.languages[r])));self.close()},!1);return}var r=document.getElementsByTagName("script");r=r[r.length-1];if(r){t.filename=r.src;document.addEventListener&&!r.hasAttribute("data-manual")&&document.addEventListener("DOMContentLoaded",t.highlightAll)}})();;
+      Prism.languages.markup={comment:/&lt;!--[\w\W]*?--(&gt;|&gt;)/g,prolog:/&lt;\?.+?\?&gt;/,doctype:/&lt;!DOCTYPE.+?&gt;/,cdata:/&lt;!\[CDATA\[[\w\W]+?]]&gt;/i,tag:{pattern:/&lt;\/?[\w:-]+\s*(?:\s+[\w:-]+(?:=(?:("|')(\\?[\w\W])*?\1|\w+))?\s*)*\/?&gt;/gi,inside:{tag:{pattern:/^&lt;\/?[\w:-]+/i,inside:{punctuation:/^&lt;\/?/,namespace:/^[\w-]+?:/}},"attr-value":{pattern:/=(?:('|")[\w\W]*?(\1)|[^\s>]+)/gi,inside:{punctuation:/=|&gt;|"/g}},punctuation:/\/?&gt;/g,"attr-name":{pattern:/[\w:-]+/g,inside:{namespace:/^[\w-]+?:/}}}},entity:/&amp;#?[\da-z]{1,8};/gi};Prism.hooks.add("wrap",function(e){e.type==="entity"&&(e.attributes.title=e.content.replace(/&amp;/,"&"))});;
+      Prism.languages.css={comment:/\/\*[\w\W]*?\*\//g,atrule:/@[\w-]+?(\s+[^;{]+)?(?=\s*{|\s*;)/gi,url:/url\((["']?).*?\1\)/gi,selector:/[^\{\}\s][^\{\}]*(?=\s*\{)/g,property:/(\b|\B)[a-z-]+(?=\s*:)/ig,string:/("|')(\\?.)*?\1/g,important:/\B!important\b/gi,ignore:/&(lt|gt|amp);/gi,punctuation:/[\{\};:]/g};Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{style:{pattern:/(&lt;|<)style[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/style(>|&gt;)/ig,inside:{tag:{pattern:/(&lt;|<)style[\w\W]*?(>|&gt;)|(&lt;|<)\/style(>|&gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.css}}});;
+      Prism.languages.clike={comment:{pattern:/(^|[^\\])(\/\*[\w\W]*?\*\/|\/\/.*?(\r?\n|$))/g,lookbehind:!0},string:/("|')(\\?.)*?\1/g,keyword:/\b(if|else|while|do|for|return|in|instanceof|function|new|try|catch|finally|null|break|continue)\b/g,"boolean":/\b(true|false)\b/g,number:/\b-?(0x)?\d*\.?[\da-f]+\b/g,operator:/[-+]{1,2}|!|=?&lt;|=?&gt;|={1,2}|(&amp;){1,2}|\|?\||\?|\*|\//g,ignore:/&(lt|gt|amp);/gi,punctuation:/[{}[\];(),.:]/g};;
+      Prism.languages.javascript=Prism.languages.extend("clike",{keyword:/\b(var|let|if|else|while|do|for|return|in|instanceof|function|new|with|typeof|try|catch|finally|null|break|continue)\b/g,number:/\b(-?(0x)?\d*\.?[\da-f]+|NaN|-?Infinity)\b/g});Prism.languages.insertBefore("javascript","keyword",{regex:{pattern:/(^|[^/])\/(?!\/)(\[.+?]|\\.|[^/\r\n])+\/[gim]{0,3}(?=\s*($|[\r\n,.;})]))/g,lookbehind:!0}});Prism.languages.markup&&Prism.languages.insertBefore("markup","tag",{script:{pattern:/(&lt;|<)script[\w\W]*?(>|&gt;)[\w\W]*?(&lt;|<)\/script(>|&gt;)/ig,inside:{tag:{pattern:/(&lt;|<)script[\w\W]*?(>|&gt;)|(&lt;|<)\/script(>|&gt;)/ig,inside:Prism.languages.markup.tag.inside},rest:Prism.languages.javascript}}});;
+      
+    </script>
+    <!-- App js-->
+    <script>
+      $(function(){
+        var $window = $(window);
+        $('.scrollspy .nav').affix({
+          offset: {
+            top: function () { return $window.width() <= 980 ? 480 : 400 }
+          , bottom: 50
+          }
+        });
+      })
+    </script>
+  </body>
+</html>

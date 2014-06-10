@@ -1,0 +1,631 @@
+// import prefixeru pro ruzne browsery
+@import (less) 'prefixer';
+
+/**
+ * clearfix float layoutu
+ */
+.clearfix {
+  display: block;
+  zoom: 1;
+
+  &:after {
+    content: " ";
+    display: block;
+    font-size: 0;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+  }
+}
+
+// definice fontu
+@font-default: "Arial CE", Arial, sans-serif;
+
+@color-blue: #00a0dc;		// aktivni komponenty
+@color-blue-border: darken(@color-blue, 3%);	// border komponent
+@color-white: #FFF;			// text kompontent
+
+@color-default: #474747;	// default text
+@color-background: #FFF;	// pozadi
+@color-background-gradient: #f8f8f8;	// gradient pozadi
+@color-border: #e4e4e4;		// border
+@color-background-input: #FFF;	// pozadi inputu
+
+@color-title: #76b502;		// title
+@color-button: #e66200;		// pozadi buttonu
+@color-button-text: #FFF;	// text buttonu
+
+body {
+	background: url('../img/background.jpg') 50% 50% no-repeat;
+	background-size: cover;
+}
+
+/**
+ * 
+ * .ctlm-calc je hlavni container
+ * celeho layoutu
+ * 
+ */
+.ctlm-calc {
+	font-family: @font-default;
+	color: @color-default;
+	width: 960px;
+}
+
+/**
+ * 
+ * info textova cast s logem
+ * vlevo od kalkulatoru
+ * 
+ */
+.ctlm-calc	{
+	margin: 0 auto;
+	
+	.ctlm-info {
+		width: 510px;
+		float: left;
+		padding: 15px;
+		position: relative;
+		z-index: 2;
+		
+		.logo {
+			margin-bottom: 30px;
+		}
+		
+		.credito {
+			position: absolute;
+			display: block;
+			top: 35px; right: -20px;
+		}
+		
+		.title {
+			font-size: 20px;
+			font-weight: bold;
+//			color: @color-title;
+			margin-bottom: 20px;
+			width: 55%;
+		}
+		
+		.subtitle {
+			font-size: 18px;
+			margin-bottom: 20px;
+			width: 55%;
+		}
+		
+		ul {
+			margin: 0;
+			padding: 0;
+			width: 60%;
+			
+			li {
+				list-style: none;
+				margin: 0;
+				margin-bottom: 8px;
+				padding-left: 15px;
+				background: url('../img/bg-li.png') 0 4px no-repeat;
+			}
+		}
+		
+	}
+
+	.ctlm-form {
+  /**
+   * 
+   * formular kalkulatoru
+   * 
+   */
+		width: 404px;
+		float: right;
+		margin-right: 15px;
+		padding: 30px 0 110px;
+		
+		form {
+			margin-top: 47px;
+			position: relative;
+
+			fieldset {
+				border: 1px solid @color-border;
+				border-radius: 5px 0 5px 5px;
+				padding: 20px 16px 10px;
+				background: @color-background;
+				.gradient(bottom, @color-background, @color-background-gradient);
+				margin: 0;
+				
+				label {
+					float: left;
+					width: 170px;
+					text-transform: uppercase;
+					line-height: 26px;
+					font-size: 12px;
+					font-weight: bold;
+					
+					i {
+						display: block;
+						width: 24px; 
+						height: 24px; 
+						line-height: 24px;
+						background: @color-blue 50% 50% no-repeat;
+						border: 1px solid @color-blue-border;
+						border-radius: 3px;
+						text-align: center;
+						color: @color-white;
+						font-size: 12px;
+						font-weight: bold;
+						font-style: normal;
+						float: left; 
+						margin-right: 8px;
+						vertical-align: middle;
+						
+						&.ico-cena {
+							background-image: url('../img/ico-cena.png');
+						}
+					}
+				}
+				
+				.ctlm-message {
+				
+					position: absolute;
+					width: 370px;
+					padding: 16px;
+					bottom: 1px;
+					left: 1px;
+					font-size: 13px;
+					text-transform: uppercase;
+					font-weight: bold;
+					background: #c4ebfa;
+					border-radius: 0 0 5px 5px;
+					
+					i {
+						display: inline-block;
+						width: 25px; height: 25px; line-height: 26px;
+						background: @color-default;
+						border-radius: 100%;
+						font-size: 20px;
+						text-transform: lowercase;
+						color: #c4ebfa;
+						font-style: normal;
+						font-weight: bold;
+						font-family: serif;
+						font-family: serif;
+						text-align: center;
+						margin-right: 10px;
+					}
+					
+				}
+				
+				.ctlm-input {
+					width: 200px;
+					margin-bottom: 10px;
+					float: left;
+					
+					input {
+						background: @color-background-input;
+						border: 1px solid @color-border;
+						padding: 4px;
+						margin: 0;
+						border-radius: 4px;
+						text-align: center;
+						font-weight: bold;
+						font-size: 14px;
+						font-family: @font-default;
+						
+						&:focus {
+							outline: none;
+						}
+					}
+					
+					.ctlm-cena-value {
+						line-height: 26px;
+						font-size: 16px;
+						font-weight: bold;
+						text-align: center;
+						display: block;
+					}
+					
+					&.ctlm-platba {
+						.ctlm-platba-min, .ctlm-platba-max {
+							margin-top: 3px;
+							font-size: 11px;
+							line-height: 16px;
+							float: left;
+						}
+						.ctlm-platba-max {
+							float: right;	
+						}
+					}
+					
+					&.ctlm-splatky,
+					&.ctlm-odklad
+					{
+						width: 116px;
+						padding-top: 6px;
+						padding-left: 15px;
+						position: relative;
+						margin-bottom: 5px;
+					
+						.ctlm-splatky-min, .ctlm-splatky-max,
+						.ctlm-odklad-min, .ctlm-odklad-max {
+							margin-top: 8px;
+							font-size: 11px;
+							line-height: 16px;
+							float: left;
+						}
+						.ctlm-splatky-max,
+						.ctlm-odklad-max {
+							float: right;
+						}
+						
+						.ctlm-splatky-input,
+						.ctlm-odklad-input {
+							width: 50px;
+							position: absolute;
+							right: -80px;
+							top: 0;
+							
+							input {
+								width: 30px;
+								&[disabled~="disabled"],
+								&[readonly~="readonly"] {
+									.opacity(0.35);	
+								}
+							}
+							
+							span {
+								font-size: 12px;
+							}
+						}
+												
+					}
+					
+					&.ctlm-splatka {
+						margin-bottom: 5px;
+					
+						.ctlm-splatka-value {
+							width: 100px;
+							line-height: 26px;
+							font-size: 20px;
+							font-weight: bold;
+							display: block;
+							float: left;
+						}
+					
+						.ctlm-button {
+							background: @color-button;
+							color: @color-button-text;
+							border-radius: 3px;
+							text-decoration: none;
+							padding: 8px 15px;
+							float: right;
+							margin-top: -3px;
+							.box-shadow(1px 1px 1px rgba(0, 0, 0, 0.2));
+							
+							&:hover {
+								background: darken(@color-button, 5%);
+							}
+						}
+						
+						&.loading {
+							.ctlm-splatka-value {
+								color: lighten(@color-default, 50%);	
+							}
+							.ctlm-button, .ctlm-button:hover {
+								background: #e4e4e4 url('../img/loading.gif') 0 50% no-repeat;
+								color: transparent;
+							}
+						}
+						&.lock {
+							.ctlm-splatka-value {
+								color: lighten(@color-default, 50%);	
+							}
+							.ctlm-button, .ctlm-button:hover {
+								background: #e4e4e4;
+								color: transparent;
+							}
+						}
+					}
+				}
+				
+				hr {
+					background: none;
+					height: 2px; line-height: 2px;
+					border: none;
+					border-bottom: 2px solid @color-border;
+					margin: 10px 0 19px;
+				}
+				
+				.ctlm-uver {
+  /**
+   * rekapitulace uveru
+   */
+					font-size: 11px;
+					position: relative;
+					text-align: center;
+					cursor: pointer;
+					
+					.ico-info {
+						.transition(all 0.3s ease);
+						margin-left: 3px;
+						display: inline-block;
+						width: 10px; height: 10px; line-height: 11px;
+						border: 1px solid @color-blue;
+						border-radius: 100%;
+						font-size: 9px;
+						color: @color-blue;
+						font-style: normal;
+						font-weight: bold;
+						font-family: serif;
+						text-align: center;
+					}
+						
+				
+					&:hover {
+						.ctlm-uver-detail {
+							opacity: 1;
+							top: 31px;
+						}
+						.ico-info {
+							background: @color-blue;
+							color: @color-white;
+						}
+					}
+					
+					.ctlm-uver-detail {
+						.transition(all 0.3s ease);
+						opacity: 0;
+						font-size: 9px;
+						text-align: left;
+						position: absolute;
+						top: 50px; left: -17px;
+						width: 387px;
+						border: 1px solid @color-border;
+						border-radius: 5px;
+						padding: 7px 5px 3px 10px;
+						background: @color-background;
+						.gradient(bottom, @color-background, @color-background-gradient);
+						margin: 0;
+						
+						&:before, &:after {
+							content: "";
+							border-style: solid;
+							border-color: transparent transparent @color-border transparent;
+							border-width: 8px;
+							display: block;
+							position: absolute;
+							top: -17px; left: 50%; margin-left: -5px;
+							width: 0; height: 0;
+						}
+						
+						&:after {
+							top: -16px;
+							border-color: transparent transparent @color-background transparent;
+						}
+					}
+					h3 {
+						clear: both;
+						font-size: 10px;
+						margin: 0;
+						margin-bottom: 5px;
+					}
+					dl, dt, dd {
+						padding: 0;
+						margin: 0;
+					}
+					dt {
+						width: 70%;
+						float: left;
+						margin-bottom: 5px;
+						small {
+							font-size: 9px;
+							display: block;
+							width: 130%;
+							padding-top: 2px;
+							color: lighten(@color-default, 25%);
+						}
+						&.short {
+							width: 24%;	
+						}
+					}
+					dd {
+						font-size: 10px;
+						font-weight: bold;
+						width: 30%;
+						float: left;
+						margin-bottom: 5px;
+						&.short {
+							font-weight: normal;
+							width: 76%;	
+						}
+					}
+					
+					.ctlm-left {
+						width: 50%;
+						float: left;
+					}
+					.ctlm-right {
+						width: 50%;
+						float: right;
+					}
+				}
+			}
+		}
+	}
+}
+
+/**
+ * 
+ * nastylovana jquery-ui komponenta spinner 
+ * (tlacitka + a - u inputu)
+ * 
+ */
+.ctlm-calc .ctlm-form form {
+	
+	.ui-spinner {
+		height: 24px;
+		overflow: visible;
+		background: @color-background;
+
+		.ui-spinner-input {
+			font-family: @font-default;
+			font-weight: bold;
+			font-size: 14px;
+			text-align: center;
+			width: 190px;
+			margin: 0;
+			border: 0;
+		}
+
+		.ui-spinner-button {
+			width: 24px; 
+			height: 24px; 
+			line-height: 24px;
+			background: @color-blue;
+			border: 1px solid @color-blue-border;
+			border-radius: 3px;
+			z-index: 100;
+			cursor: pointer;
+			
+			&.ui-state-hover {
+				background: darken(@color-blue, 5%);
+				border-color: darken(@color-blue-border, 5%);
+			}
+
+			&.ui-spinner-up {
+				position: absolute;
+				top: -1px;
+				right: -1px;
+				border-radius: 0 3px 3px 0;
+
+				.ui-icon {
+					background: url('../img/ico-plus.png') 50% 50% no-repeat;
+					left: 20%;
+				}
+			}
+			&.ui-spinner-down {
+				position: absolute;
+				left: -1px;
+				top: -1px;
+				border-radius: 3px 0 0 3px;
+
+				.ui-icon {
+					background: url('../img/ico-minus.png') 50% 50% no-repeat;
+					left: 20%;
+				}
+			}
+		}
+	}
+}
+
+/**
+ * 
+ * nastylovana jquery-ui komponenta slider 
+ * (tahlo na pocet splatek)
+ * 
+ */
+.ctlm-calc .ctlm-form form {
+	
+	.ui-slider {
+
+		border: none;
+		background: url('../img/bg-slider.png') 0 50% no-repeat;
+
+		.ui-slider-handle {
+			background: @color-blue;
+			border: 1px solid @color-blue-border;
+			width: 15px;
+			height: 15px;
+			top: 0;
+			cursor: pointer;
+			.box-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+
+			&.ui-state-hover {
+				background: darken(@color-blue, 5%);
+				border-color: darken(@color-blue-border, 5%);
+			}
+			&:focus {
+				outline: none;
+			}
+		}
+
+	}
+}
+
+/**
+ * 
+ * nastylovana komponenta selectBoxIt
+ * (na vyber baremu)
+ * 
+ */
+.ctlm-calc .ctlm-form form {
+			
+	.ctlm-barem-wrapper {
+		position: absolute;
+		top: -36px; right: 0;
+		width: 404px;
+		text-align: right;
+		
+		label {
+			line-height: 41px;
+			font-size: 12px;
+			font-weight: bold;
+			text-transform: uppercase;
+			margin-right: 10px;
+			
+			img {
+				position: absolute;
+				top: 0; left: 0;
+				width: 80px;
+			}
+		}
+
+		.selectboxit-container {
+			float: right;
+			text-align: left;
+			.selectboxit.selectboxit-disabled {
+				.opacity(1);
+				.selectboxit-text {
+					color: lighten(desaturate(@color-blue, 100%), 20%);
+					text-decoration: none;
+				}
+			}
+
+			.selectboxit, .selectboxit span {
+				height: 36px;
+				line-height: 36px;
+			}
+			.selectboxit-btn {
+				width: 225px;
+				.gradient(@color-background, @color-background-gradient, @color-background);
+				border: 1px solid @color-border;
+				border-bottom: 0;
+				border-radius: 5px 5px 0px 0px;
+
+				.selectboxit-text {
+					font-size: 12px;
+					color: @color-blue;
+					text-decoration: underline;
+					text-align: right;
+				}
+
+				&:hover, &:focus {
+					background: @color-background;
+					background-position: 0 0;
+				}
+			}
+
+			.selectboxit-list {
+				background: @color-background;
+				border: 1px solid @color-border;
+				border-top: none;
+				border-radius: 0 0 5px 5px;
+				.selectboxit-focus {
+					.selectboxit-option-anchor {
+						background: @color-blue;
+					}
+				}
+				.selectboxit-option-anchor {
+					font-size: 12px;
+				}
+			}
+		}
+	}
+}

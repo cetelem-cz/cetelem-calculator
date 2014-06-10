@@ -1,0 +1,47 @@
+{
+   "102":{
+      "id":"102",
+      "name":"Klasick\u00fd \u00fav\u011br",
+      "limit":{
+         "minuver":2500,
+         "maxuver":400000,
+         "minpocspl":5,
+         "maxpocspl":48,
+         "minodklad":2,
+         "maxodklad":3,
+         "reqodklad":0
+      },
+      "platba":"free",
+      "platbaValue":0
+   },
+   "104":{
+      "id":"104",
+      "name":"10% + 10 x 10%",
+      "limit":{
+         "minuver":2500,
+         "maxuver":400000,
+         "minpocspl":10,
+         "maxpocspl":10,
+         "minodklad":null,
+         "maxodklad":null,
+         "reqodklad":0
+      },
+      "platba":"percent",
+      "platbaValue":10
+   },
+   "322":{
+      "id":"322",
+      "name":"1 % m\u011bs\u00ed\u010dn\u011b OKAY",
+      "limit":{
+         "minuver":2500,
+         "maxuver":80000,
+         "minpocspl":10,
+         "maxpocspl":15,
+         "minodklad":null,
+         "maxodklad":null,
+         "reqodklad":0
+      },
+      "platba":"free",
+      "platbaValue":0
+   }
+}

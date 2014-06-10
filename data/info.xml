@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<!DOCTYPE bareminfo SYSTEM "https://sikansen.cetelem.cz/bareminfo.dtd">
+<bareminfo>
+	
+			
+	<barem id="100">
+		<titul>Klasický úvěr</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="range" min="2" max="3" required="0">možný odklad splátek 2 až 3 měsíců</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="range" min="5" max="48">volitelný počet splátek od 5 do 48</splatky>
+	</barem>
+			
+	<barem id="102">
+		<titul>Klasický úvěr</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="range" min="2" max="3" required="0">možný odklad splátek 2 až 3 měsíců</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="range" min="5" max="48">volitelný počet splátek od 5 do 48</splatky>
+	</barem>
+			
+	<barem id="104">
+		<titul>10% + 10 x 10%</titul>
+		<platba type="percent" value="10">přímá platba vždy 10% z ceny zboží</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="10">počet splátek 10</splatky>
+	</barem>
+			
+	<barem id="151">
+		<titul>10%+11x10 - zdarma 2</titul>
+		<platba type="percent" value="10">přímá platba vždy 10% z ceny zboží</platba>
+<odklad type="fixed" value="3" required="1">možný odklad splátek 3 měsíce</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="11">počet splátek 11</splatky>
+	</barem>
+			
+	<barem id="160">
+		<titul>BUĎ A NEBO - zdarma do 2 měsíců</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="fixed" value="3" required="1">možný odklad splátek 3 měsíce</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="range" min="5" max="36">volitelný počet splátek od 5 do 36</splatky>
+	</barem>
+			
+	<barem id="201">
+		<titul>1% měsíčně</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="200000">úvěr 2500,- až 200000,- Kč</uver>
+<splatky type="range" min="5" max="25">volitelný počet splátek od 5 do 25</splatky>
+	</barem>
+			
+	<barem id="210">
+		<titul>0%+24x5 - zdarma 10</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="24">počet splátek 24</splatky>
+	</barem>
+			
+	<barem id="216">
+		<titul>Zdarma do 6 měsíců, jinak 20 měs.</titul>
+		<platba type="fixed" value="0">přímá platba 0,- Kč</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="20">počet splátek 20</splatky>
+	</barem>
+			
+	<barem id="221">
+		<titul>Zdarma do 6 měsíců, jinak 36 měs.</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="200000">úvěr 2500,- až 200000,- Kč</uver>
+<splatky type="fixed" value="36">počet splátek 36</splatky>
+	</barem>
+			
+	<barem id="222">
+		<titul>Zdarma do 9 měsíců, jinak 36 měs.</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="200000">úvěr 2500,- až 200000,- Kč</uver>
+<splatky type="fixed" value="36">počet splátek 36</splatky>
+	</barem>
+			
+	<barem id="223">
+		<titul>36ms - zdarma 12</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="36">počet splátek 36</splatky>
+	</barem>
+			
+	<barem id="226">
+		<titul>Zdarma do 4 měsíců, jinak 10%+10x10</titul>
+		<platba type="percent" value="10">přímá platba vždy 10% z ceny zboží</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="10">počet splátek 10</splatky>
+	</barem>
+			
+	<barem id="227">
+		<titul>36ms+1ms - zdarma 12</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="fixed" value="2" required="1">možný odklad splátek 2 měsíce</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="36">počet splátek 36</splatky>
+	</barem>
+			
+	<barem id="228">
+		<titul>0%+15ms+odklad - zdarma 4</titul>
+		<platba type="fixed" value="0">přímá platba 0,- Kč</platba>
+<odklad type="range" min="2" max="3" required="0">možný odklad splátek 2 až 3 měsíců</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="15">počet splátek 15</splatky>
+	</barem>
+			
+	<barem id="229">
+		<titul>15ms - zdarma 8</titul>
+		<platba type="percent" value="10">přímá platba vždy 10% z ceny zboží</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="15">počet splátek 15</splatky>
+	</barem>
+			
+	<barem id="235">
+		<titul>Klasický úvěr</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="range" min="2" max="3" required="0">možný odklad splátek 2 až 3 měsíců</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="range" min="6" max="36">volitelný počet splátek od 6 do 36</splatky>
+	</barem>
+			
+	<barem id="303">
+		<titul>Klasický úvěr 10-14</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="range" min="2" max="3" required="0">možný odklad splátek 2 až 3 měsíců</odklad>
+<uver type="range" min="2500" max="200000">úvěr 2500,- až 200000,- Kč</uver>
+<splatky type="range" min="10" max="14">volitelný počet splátek od 10 do 14</splatky>
+	</barem>
+			
+	<barem id="610">
+		<titul>1 % měsíčně (5 - 30 MS)</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="200000">úvěr 2500,- až 200000,- Kč</uver>
+<splatky type="range" min="5" max="30">volitelný počet splátek od 5 do 30</splatky>
+	</barem>
+			
+	<barem id="613">
+		<titul>IKEA Klasik OSVČ</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="10000" max="400000">úvěr 10000,- až 400000,- Kč</uver>
+<splatky type="range" min="12" max="48">volitelný počet splátek od 12 do 48</splatky>
+	</barem>
+			
+	<barem id="614">
+		<titul>IKEA Klasik PRÁVNICKÁ OSOBA</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="20000" max="400000">úvěr 20000,- až 400000,- Kč</uver>
+<splatky type="range" min="12" max="48">volitelný počet splátek od 12 do 48</splatky>
+	</barem>
+			
+	<barem id="615">
+		<titul>ALZA Klasik OSVČ</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="10000" max="400000">úvěr 10000,- až 400000,- Kč</uver>
+<splatky type="range" min="12" max="48">volitelný počet splátek od 12 do 48</splatky>
+	</barem>
+			
+	<barem id="616">
+		<titul>ALZA Klasik PRÁVNICKÁ OSOBA</titul>
+		<platba type="free">volitelná přímá platba od 0%</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="20000" max="400000">úvěr 20000,- až 400000,- Kč</uver>
+<splatky type="range" min="12" max="48">volitelný počet splátek od 12 do 48</splatky>
+	</barem>
+			
+	<barem id="623">
+		<titul>Bez navýšení 10% + 9 x 10%</titul>
+		<platba type="percent" value="10">přímá platba vždy 10% z ceny zboží</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="9">počet splátek 9</splatky>
+	</barem>
+			
+	<barem id="632">
+		<titul>Bez navýšení 10% + 9 x 10%</titul>
+		<platba type="percent" value="10">přímá platba vždy 10% z ceny zboží</platba>
+<odklad type="none" required="0">bez odkladu splátek</odklad>
+<uver type="range" min="2500" max="400000">úvěr 2500,- až 400000,- Kč</uver>
+<splatky type="fixed" value="9">počet splátek 9</splatky>
+	</barem>
+	
+</bareminfo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="windows-1250"?>
+
+<webciselnik>
+			
+	<pojisteni id="T1">
+		<titul>SOUBOR MASTER</titul>
+		<popis>4,99 % z měsíční splátky úvěru</popis>
+		<napoveda><![CDATA[SOUBOR MASTER v sobě zahrnuje pojištění pro případ ztráty zaměstnání nebo hospitalizace*, pracovní neschopnosti, invalidity III. stupně a úmrtí. Úhrada za pojištění je 4,99 % z měsíční splátky úvěru. <small>* Pojištěný je pojištěn vždy pouze na jedno z těchto rizik dle jeho aktuálního zaměstnaneckého statutu</small>]]></napoveda>
+	</pojisteni>
+			
+	<pojisteni id="T2">
+		<titul>SOUBOR MASTER PLUS</titul>
+		<popis>4,99 % z měsíční splátky úvěru</popis>
+		<napoveda><![CDATA[SOUBOR MASTER PLUS v sobě zahrnuje pojištění pro případ ztráty zaměstnání nebo hospitalizace*, pracovní neschopnosti, invalidity III. stupně, úmrtí, Pojištění odcizení věci, na kterou byl poskytnut úvěr**, a Pojištění Home Assistance. Úhrada za pojištění je 4,99 % z měsíční splátky úvěru plus 49 Kč. <small>* Pojištěný je pojištěn vždy pouze na jedno z těchto rizik dle jeho aktuálního zaměstnaneckého statutu<br /><strong>** Pojistitelná věc: černá a bílá technika, šedá technika, nábytek, sportovní nářadí a vybavení, videohry, hudební nástroje, knihy</strong></small>]]></napoveda>
+	</pojisteni>
+	
+</webciselnik>

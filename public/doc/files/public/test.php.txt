@@ -1,0 +1,40 @@
+<?php 
+
+require '../config/application.php';
+
+// $baremy = array ( 
+// 			102 => CtlmBarem::__set_state(array( 'id' => '102', 'name' => 'Klasický úvěr', 'limit' => CtlmLimit::__set_state(array( 'id' => '102', 'minuver' => 2500, 'maxuver' => 400000, 'minpocspl' => 5, 'maxpocspl' => 48, )), )), 
+// 			104 => CtlmBarem::__set_state(array( 'id' => '104', 'name' => '10% + 10 x 10%', 'limit' => CtlmLimit::__set_state(array( 'id' => '104', 'minuver' => 2500, 'maxuver' => 400000, 'minpocspl' => 10, 'maxpocspl' => 10, )), )), 
+// 			322 => CtlmBarem::__set_state(array( 'id' => '322', 'name' => '1 % měsíčně OKAY', 'limit' => CtlmLimit::__set_state(array( 'id' => '322', 'minuver' => 2500, 'maxuver' => 80000, 'minpocspl' => 10, 'maxpocspl' => 15, )), )), 
+// 		);
+
+// $array ( 
+// 		322 => CtlmLimit::__set_state(array( 'id' => '322', 'minuver' => 2500, 'maxuver' => 80000, 'minpocspl' => 10, 'maxpocspl' => 80000, )), 
+// 		102 => CtlmLimit::__set_state(array( 'id' => '102', 'minuver' => 2500, 'maxuver' => 400000, 'minpocspl' => 5, 'maxpocspl' => 48, )), 
+// 		104 => CtlmLimit::__set_state(array( 'id' => '104', 'minuver' => 2500, 'maxuver' => 400000, 'minpocspl' => 10, 'maxpocspl' => 10, )), )
+
+
+// array ( 750 => CtlmMaterial::__set_state(array( 'id' => '750', 'name' => 'Výpočetní technika', )), 751 => CtlmMaterial::__set_state(array( 'id' => '751', 'name' => 'Bílá technika', )), 752 => CtlmMaterial::__set_state(array( 'id' => '752', 'name' => 'Černá technika', )), 753 => CtlmMaterial::__set_state(array( 'id' => '753', 'name' => 'Oblečení a sportovní vybavení', )), 754 => CtlmMaterial::__set_state(array( 'id' => '754', 'name' => 'Hobby a zahrada', )), 755 => CtlmMaterial::__set_state(array( 'id' => '755', 'name' => 'Dům a stavba', )), 756 => CtlmMaterial::__set_state(array( 'id' => '756', 'name' => 'Nábytek', )), 757 => CtlmMaterial::__set_state(array( 'id' => '757', 'name' => 'Služby', )), 758 => CtlmMaterial::__set_state(array( 'id' => '758', 'name' => 'Auto-moto', )), )array ( 'A3' => CtlmPojisteni::__set_state(array( 'id' => 'A3', 'name' => 'SOUBOR STANDARD', )), 'B1' => CtlmPojisteni::__set_state(array( 'id' => 'B1', 'name' => 'SOUBOR PREMIUM', )), );
+
+
+// $vypocet = new CtlmVypocet();
+// $vypocet->kodBaremu = 216;
+// $vypocet->kodPojisteni = A3;
+// $vypocet->cenaZbozi = 10000;
+// $vypocet->primaPlatba = 100;
+// $vypocet->vyseSplatky = 1000;
+
+// $vysledek = Ctlm::$kalkulator->calculate($vypocet, true);
+// var_export($vysledek);
+
+$baremy = Ctlm::$ciselnik->getBaremy();
+var_dump($baremy);
+
+$limity = Ctlm::$ciselnik->getLimity();
+var_dump($limity);
+
+$materialy = Ctlm::$ciselnik->getMaterialy();
+var_dump($materialy);
+
+$pojisteni = Ctlm::$ciselnik->getPojisteniList();
+var_dump($pojisteni);

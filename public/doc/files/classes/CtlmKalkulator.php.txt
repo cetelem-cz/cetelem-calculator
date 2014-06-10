@@ -1,0 +1,101 @@
+<?php
+
+require CTLM_CLASSES.'/CtlmVypocet.php';
+
+Ctlm::$kalkulator = CtlmKalkulator::getInstance();
+
+//$vypocet = new CtlmVypocet();
+//$vypocet->kodBaremu = 100;
+//$vypocet->kodPojisteni = A3;
+//$vypocet->cenaZbozi = 10000;
+//$vypocet->primaPlatba = 100;
+//$vypocet->vyseSplatky = 1000;
+//
+//$vysledek = Ctlm::$kalkulator->calculate($vypocet);
+//
+//var_dump($vypocet);
+//var_dump($vysledek);
+
+/**
+ * Obsluzna trida pro kalkulator cetelem
+ */
+class CtlmKalkulator {
+	
+	/**
+	 * instance kalkulatoru
+	 * @var CtlmKalkulator
+	 */
+	protected static $instance = null;
+	
+	/**
+	 * vrati instanci kalkulatoru
+	 * @return CtlmKalkulator
+	 */
+	public static function getInstance()
+	{
+		if (self::$instance == null)
+			self::$instance = new self();
+		return self::$instance;
+	}
+	
+	private function __constructor()
+	{
+	}
+	
+	
+	/**
+	 * kalkulace uveru
+	 * 
+	 * @param CtlmVypocet $vypocet
+	 * @return CtlmVypocet
+	 */
+	public function calculate(CtlmVypocet $vypocet, $debug = false)
+	{
+		if (preg_match('/^http/', CTLM_URL_KALKULATOR))
+			$url = CTLM_URL_KALKULATOR.$vypocet->getUrlParams();
+		else
+			$url = CTLM_URL_KALKULATOR;
+		
+		$data = file_get_contents($url);
+		$xml = simplexml_load_string($data);
+		
+		if ($debug == true) {
+			echo "<xmp>";
+			echo $data;
+			var_dump($xml);
+			echo "</xmp>";
+		}
+		
+		$vysledek = new CtlmVypocet();
+		$vysledek->info = (string) trim($xml->info->zprava);
+		$vysledek->status = (string) trim($xml->status);
+		
+		foreach ((array)$xml->vysledek as $key => $value) {
+			if ($key == 'opce') continue;
+			if (property_exists($vysledek, $key)) {
+				
+				if (preg_match('/^[0-9]+,[0-9]+$/', $value))
+					$value = str_replace(',', '.', $value);
+				
+				if (is_numeric($value))
+					$vysledek->$key = (float) $value;
+				else
+					$vysledek->$key = (string) $value;
+				
+			}
+		}
+		
+		if ((int) $xml->vysledek->opce->attributes()->enabled == 1) {
+			$opce = new CtlmVypocet();
+			foreach ((array)$xml->vysledek->opce as $key => $value) {
+				if (property_exists($opce, $key))
+					$opce->$key = (string) $value;
+			}
+			$vysledek->opce = $opce;
+		}
+		
+		return $vysledek;
+		
+	}
+	
+}
