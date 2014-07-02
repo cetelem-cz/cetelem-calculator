@@ -818,7 +818,7 @@ Ctlm.Platba = {
 				break;
 				
 			case 'percent':
-				min = max = (cenaZbozi / 100) * platbaValue;
+				min = max = Math.round((cenaZbozi / 100) * platbaValue);
 				Ctlm.Platba.lock();
 				break;
 		}
