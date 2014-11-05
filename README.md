@@ -22,3 +22,6 @@ Internet Eplorer 9+, Chrome, Firefox, Safari
 * Oprava přímé platby zadané pomocí procenta
 
 `1.0` - 11. Červen 2014
+
+## Licence
+Copyright (c) 2014 Cetelem ČR, a.s. (http://www.cetelem.cz) pod licencí MIT
