@@ -28,9 +28,9 @@ switch ($_POST['do']) {
 		 */
 		if (empty($vypocet->kodPojisteni)) {
 			
-			if (defined('CTLM_POJISTENI'))
+			if (defined('CTLM_POJISTENI')) {
 				$vypocet->kodPojisteni = CTLM_POJISTENI;
-			else {
+			} else {
 				$pojisteni = Ctlm::$ciselnik->getPojisteniList();
 				/* @var $poj CtlmPojisteni */
 				$prvniPojisteni = array_splice($pojisteni, 0, 1);

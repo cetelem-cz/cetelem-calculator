@@ -141,8 +141,12 @@ $cenaZbozi = 20000;
 							<span class="ctlm-value-wrapper">
 								<span class="ctlm-value">
 									<?php 
-										$pojisteniList = Ctlm::$ciselnik->getPojisteniList(); 
-										$pojisteni = reset($pojisteniList);
+										$pojisteniList = Ctlm::$ciselnik->getPojisteniList();
+										if (array_key_exists(CTLM_POJISTENI, $pojisteniList)) {
+											$pojisteni = $pojisteniList[CTLM_POJISTENI];
+										} else {
+											$pojisteni = reset($pojisteniList);
+										}
 										echo $pojisteni->name;
 									?>
 								</span>
@@ -156,8 +160,12 @@ $cenaZbozi = 20000;
 								<select name="kodPojisteni" id="kodPojisteni">
 									<?php 
 										foreach (Ctlm::$ciselnik->getPojisteniList() as $pojisteni) { 
-											/* @var $pojisteni CtlmPojisteni */
-											echo "<option value=\"{$pojisteni->id}\">{$pojisteni->name}</option>";
+											/* @var $barem CtlmBarem */
+											if ($pojisteni->id == CTLM_POJISTENI) {
+												echo "<option value=\"{$pojisteni->id}\" selected=\"selected\">{$pojisteni->name}</option>";
+											} else {
+												echo "<option value=\"{$pojisteni->id}\">{$pojisteni->name}</option>";
+											}
 										} 
 									?>
 								</select>

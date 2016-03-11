@@ -8,14 +8,14 @@
  * definice cisla prodejce
  * @var string
  */
-define ('CTLM_VDR_ID', '#######');
+define ('CTLM_VDR_ID', '######');
 
 /**
  * pojisteni zvolene klientem
  * pokud neni definovane, zvoli se prvni z ciselniku
  * podle toho jake ma prodejce povolene
  */
-// define ('CTLM_POJISTENI', 'A3');
+ define ('CTLM_POJISTENI', 'T1');
 
 /**
  * definice prostredi

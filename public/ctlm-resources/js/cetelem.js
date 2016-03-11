@@ -47,6 +47,7 @@ var Ctlm = {
 		
 		// inicializace jednotlivych komponent formulare
 		this.Baremy.init();
+		this.Pojisteni.init();
 		this.Splatky.init();
 		this.Odklad.init();
 		this.Platba.init();
@@ -63,6 +64,7 @@ var Ctlm = {
 	{
 		this.inputs = {
 			kodBaremu: this.form.find('select[name~="kodBaremu"]'),
+			kodPojisteni: this.form.find('select[name~="kodPojisteni"]'),
 			cenaZbozi: this.form.find('input[name~="cenaZbozi"]'),
 			primaPlatba: this.form.find('input[name~="primaPlatba"]'),
 			pocetSplatek: this.form.find('input[name~="pocetSplatek"]'),
@@ -173,6 +175,7 @@ var Ctlm = {
 	disable: function() 
 	{
 		Ctlm.Baremy.disable();
+		Ctlm.Pojisteni.disable();
 		Ctlm.Splatky.disable();
 		Ctlm.Odklad.disable();
 		Ctlm.Platba.disable();
@@ -185,6 +188,7 @@ var Ctlm = {
 	enable: function()
 	{
 		Ctlm.Baremy.enable();
+		Ctlm.Pojisteni.enable();
 		Ctlm.Splatky.enable();
 		Ctlm.Odklad.enable();
 		Ctlm.Platba.enable();
@@ -331,8 +335,25 @@ Ctlm.Pojisteni = {
 	 */
 	init: function() 
 	{
-		if (this.pojisteni == null)
+		if (this.pojisteni == null) {
 			this.load();
+		}
+			
+		// pri zmene baremu
+		Ctlm.inputs.kodPojisteni.on('change', this.change);
+	
+		// inicializace selectBoxIt custom selectu
+		Ctlm.inputs.kodPojisteni.selectBoxIt({
+			autoWidth: false
+		});
+	},
+	
+	/**
+	 * pri zmene pojisteni
+	 */
+	change: function() 
+	{
+		Ctlm.calculate();
 	},
 	
 	/**
@@ -359,6 +380,22 @@ Ctlm.Pojisteni = {
 	{
 		var url = Ctlm.options.ajaxUrl;
 		$.post(url, {'do': 'getPojisteni'}, Ctlm.Pojisteni.set);
+	},
+	
+		/**
+	 * disablovani selectu pri ajaxu
+	 */
+	disable: function() 
+	{
+		Ctlm.inputs.kodPojisteni.data("selectBox-selectBoxIt").disable();
+	},
+	
+	/**
+	 * enablovani selectu po ajaxu
+	 */
+	enable: function()
+	{
+		Ctlm.inputs.kodPojisteni.data("selectBox-selectBoxIt").enable();
 	}
 	
 };

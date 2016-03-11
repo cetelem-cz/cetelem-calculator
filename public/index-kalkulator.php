@@ -89,11 +89,27 @@ $cenaZbozi = 20000;
 							<span class="ctlm-cena-value"><?php echo Ctlm::$helper->money($cenaZbozi) ?></span>
 						</div>
 					</div>
+					
+					<div class="clearfix">
+						<label for="kodPojisteni"><i>1</i>Typ pojištění</label>
+						<select name="kodPojisteni" tabindex="1">
+							<?php 
+								foreach (Ctlm::$ciselnik->getPojisteniList() as $pojisteni) { 
+									/* @var $barem CtlmBarem */
+									if ($pojisteni->id == CTLM_POJISTENI) {
+										echo "<option value=\"{$pojisteni->id}\" selected=\"selected\">{$pojisteni->name}</option>";
+									} else {
+										echo "<option value=\"{$pojisteni->id}\">{$pojisteni->name}</option>";
+									}
+								} 
+							?>
+						</select>
+					</div>
 
 					<hr />
 					
 					<div class="clearfix">
-						<label for="primaPlatba"><i>1</i> Přímá platba</label>
+						<label for="primaPlatba"><i>2</i> Přímá platba</label>
 						<div class="ctlm-input ctlm-platba">
 							<input id="primaPlatba" name="primaPlatba" value="0" tabindex="2" />
 							<span class="ctlm-platba-min"></span>
@@ -102,7 +118,7 @@ $cenaZbozi = 20000;
 					</div>
 					
 					<div class="clearfix">
-						<label for="pocetSplatek"><i>2</i> Délka splácení</label>
+						<label for="pocetSplatek"><i>3</i> Délka splácení</label>
 						<div class="ctlm-input ctlm-splatky">
 							<div class="ctlm-splatky-slider">
 							</div>
@@ -134,7 +150,7 @@ $cenaZbozi = 20000;
 					<hr />
 					
 					<div class="clearfix">
-						<label for="vyseSplatky"><i>3</i> Celková splátka</label>
+						<label for="vyseSplatky"><i>4</i> Celková splátka</label>
 						<div class="ctlm-input ctlm-splatka">
 							<span class="ctlm-splatka-value"></span>
 							<a href="#" class="ctlm-button">Potvrdit</a>
@@ -212,9 +228,6 @@ $cenaZbozi = 20000;
 								<dt>Za úvěr celkem zaplatíte:</dt>
 								<dd class="ctlm-opce-celkovaCastka">&nbsp;</dd>
 							</dl>
-								
-								
-
 						</div>
 					</div>
 					

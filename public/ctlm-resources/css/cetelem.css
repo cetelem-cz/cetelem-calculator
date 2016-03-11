@@ -27,7 +27,7 @@ body {
 .ctlm-calc {
   font-family: "Arial CE", Arial, sans-serif;
   color: #474747;
-  width: 960px;
+  width: 1000px;
 }
 /**
  * 
@@ -83,7 +83,7 @@ body {
    * formular kalkulatoru
    * 
    */
-  width: 404px;
+  width: 444px;
   float: right;
   margin-right: 15px;
   padding: 30px 0 110px;

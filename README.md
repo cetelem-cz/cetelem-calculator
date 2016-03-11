@@ -11,11 +11,19 @@ Webový server, PHP s SimpleXML a JSON, otevřená komunikace na Cetelem webové
 Internet Eplorer 9+, Chrome, Firefox, Safari
 
 ## Použité komponenty
-* [**LESS**](http://lesscss.org) – pro snadnější správu CSS souborů byl použit LESS. CSS soubory byly následně vygenerovány bez komprese, takže jsou nadále čitelné.* [**SelectBoxIt**](http://gregfranko.com/jquery.selectBoxIt.js/) – na stylování SELECT tagů. * [**jQuery**](http://jquery.com) – veškerá dynamická funkcionalita na straně klienta byla implementovaná s pomocí jQuery.* [**jQueryUI**](https://jqueryui.com) – pro větší uživatelské pohodlí byly nekteré standartní INPUT pole nahrazena dynamickými, např. Slider, Spinner.
+* [**LESS**](http://lesscss.org) – pro snadnější správu CSS souborů byl použit LESS. CSS soubory byly následně vygenerovány bez komprese, takže jsou nadále čitelné.
+* [**SelectBoxIt**](http://gregfranko.com/jquery.selectBoxIt.js/) – na stylování SELECT tagů. 
+* [**jQuery**](http://jquery.com) – veškerá dynamická funkcionalita na straně klienta byla implementovaná s pomocí jQuery.
+* [**jQueryUI**](https://jqueryui.com) – pro větší uživatelské pohodlí byly nekteré standartní INPUT pole nahrazena dynamickými, např. Slider, Spinner.
 
 
 
 ## Changelog
+
+`1.02` - 1. Března 2016
+
+* Přidáno pole pojištění
+
 
 `1.01` - 3. Červenec 2014
 
