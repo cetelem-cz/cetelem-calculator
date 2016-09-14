@@ -178,7 +178,7 @@ $cenaZbozi = 20000;
 					
 					<div class="ctlm-row ctlm-splatky">
 						<div class="ctlm-row-static clearfix">
-							<span class="ctlm-label">Počet měsíčních splátek:</span>
+							<span class="ctlm-label">Počet měsíčních splátek:<br /><small>(doba trvání úvěru)</small></span>
 							<span class="ctlm-value-wrapper">
 								<span class="ctlm-value ctlm-result-pocetSplatek"></span>
 							</span>
@@ -186,7 +186,7 @@ $cenaZbozi = 20000;
 						</div>
 						
 						<div class="ctlm-row-edit clearfix">
-							<label for="pocetSplatek">Počet měsíčních splátek:</label>
+							<label for="pocetSplatek">Počet měsíčních splátek:<br /><small>(doba trvání úvěru)</small></label>
 							<span class="ctlm-value-wrapper">
 								<span class="ctlm-info-message">
 									<strong>Počet splátek</strong><br /> <span class="ctlm-splatky-min"></span> - <span class="ctlm-splatky-max"></span> měsíců.
@@ -237,7 +237,7 @@ $cenaZbozi = 20000;
 					
 					<div class="ctlm-row">
 						<div class="ctlm-row-static clearfix">
-							<span class="ctlm-label">Roční úroková sazba:</span>
+							<span class="ctlm-label">Roční úroková sazba (pevná):</span>
 							<span class="ctlm-value-wrapper">
 								<span class="ctlm-value ctlm-result-ursaz"></span>
 							</span>
@@ -275,7 +275,7 @@ $cenaZbozi = 20000;
 					
 					<div class="ctlm-row ctlm-opce">
 						<div class="ctlm-row-static clearfix">
-							<span class="ctlm-label">Počet měsíčních splátek:</span>
+							<span class="ctlm-label">Počet měsíčních splátek:<br /><small>(doba trvání úvěru)</small></span>
 							<span class="ctlm-value-wrapper">
 								<span class="ctlm-value"><span class="ctlm-opce-pocetSplatek"></span> + doplatek</span>
 							</span>
@@ -311,7 +311,7 @@ $cenaZbozi = 20000;
 					
 					<div class="ctlm-row ctlm-opce">
 						<div class="ctlm-row-static clearfix">
-							<span class="ctlm-label">Roční úroková sazba:</span>
+							<span class="ctlm-label">Roční úroková sazba (pevná):</span>
 							<span class="ctlm-value-wrapper">
 								<span class="ctlm-value ctlm-opce-ursaz"></span>
 							</span>

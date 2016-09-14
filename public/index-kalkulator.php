@@ -168,17 +168,17 @@ $cenaZbozi = 20000;
 								<dt>Celková výše úvěru:</dt>
 								<dd class="ctlm-result-vyseUveru">&nbsp;</dd>
 								
-								<dt>Počet měsíčních splátek:</dt>
+								<dt>Počet měsíčních splátek:<small>(doba trvání úvěru)</small></dt>
 								<dd class="ctlm-result-pocetSplatek">&nbsp;</dd>
 								
-								<dt>Celková výše měsíční splátky: <small>(včetně pojištění, má-li být sjednáno)</small></dt>
+								<dt>Celková výše měsíční splátky:<small>(včetně pojištění, má-li být sjednáno)</small></dt>
 								<dd class="ctlm-result-vyseSplatky">&nbsp;</dd>
 								
-								<dt>Cena úvěru: <small>(včetně pojištění, má-li být sjednáno)</small></dt>
+								<dt>Cena úvěru:<small>(včetně pojištění, má-li být sjednáno)</small></dt>
 								<dd class="ctlm-result-cenaUveru">&nbsp;</dd>
 							</dl>
 							<dl class="ctlm-right">
-								<dt>Roční úroková sazba:</dt>
+								<dt>Roční úroková sazba (pevná):</dt>
 								<dd class="ctlm-result-ursaz">&nbsp;</dd>
 								
 								<dt>RPSN:</dt>
@@ -199,21 +199,21 @@ $cenaZbozi = 20000;
 								<dt>Celková výše úvěru:</dt>
 								<dd class="ctlm-opce-vyseUveru">&nbsp;</dd>
 								
-								<dt>Počet měsíčních splátek:</dt>
+								<dt>Počet měsíčních splátek:<small>(doba trvání úvěru)</small></dt>
 								<dd><span class="ctlm-opce-pocetSplatek">&nbsp;</span>+doplatek</dd>
 								
-								<dt>Celková výše měsíční splátky: <small>(včetně pojištění, má-li být sjednáno)</small></dt>
+								<dt>Celková výše měsíční splátky:<small>(včetně pojištění, má-li být sjednáno)</small></dt>
 								<dd class="ctlm-opce-vyseSplatky">&nbsp;</dd>
 								
 								<dt>Doplatek:</dt>
 								<dd class="ctlm-opce-doplatek">&nbsp;</dd>
 								
-								<dt>Cena úvěru: <small>(včetně pojištění, má-li být sjednáno)</small></dt>
+								<dt>Cena úvěru:<small>(včetně pojištění, má-li být sjednáno)</small></dt>
 								<dd class="ctlm-opce-cenaUveru">&nbsp;</dd>
 							</dl>
 							<dl class="ctlm-right ctlm-opce">
 								
-								<dt>Roční úroková sazba:</dt>
+								<dt>Roční úroková sazba (pevná):</dt>
 								<dd class="ctlm-opce-ursaz">&nbsp;</dd>
 								
 								<dt>RPSN:</dt>

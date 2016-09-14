@@ -20,6 +20,11 @@ Internet Eplorer 9+, Chrome, Firefox, Safari
 
 ## Changelog
 
+`1.03` - 1. Září 2016
+
+* Změna textací kvůli novému zákonu o úvěrech pro spotřebitele 
+
+
 `1.02` - 1. Března 2016
 
 * Přidáno pole pojištění
