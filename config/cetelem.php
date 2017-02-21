@@ -23,17 +23,20 @@ $urls = array(
 	'dummy' => array(
 		'info' => '../data/info.xml',
 		'pojisteni' => '../data/pojisteni.xml',
-		'kalkulator' => '../data/kalkulace.xml'
+		'kalkulator' => '../data/kalkulace.xml',
+		'prijem_typ' => '../data/prijem_typ.xml'
 	),
 	'uat' => array(
 		'info' => 'https://www.cetelem.cz:8654/webciselnik2.php?kodProdejce='.CTLM_VDR_ID.'&typ=info',
 		'pojisteni' => 'https://www.cetelem.cz:8654/webciselnik2.php?kodProdejce='.CTLM_VDR_ID.'&typ=pojisteni',
-		'kalkulator' => 'https://www.cetelem.cz:8654/webkalkulator.php?kodProdejce='.CTLM_VDR_ID
+		'kalkulator' => 'https://www.cetelem.cz:8654/webkalkulator.php?kodProdejce='.CTLM_VDR_ID,
+		'prijem_typ' => '../data/prijem_typ.xml'
 	),
 	'production' => array(
 		'info' => 'http://www.cetelem.cz/webciselnik2.php?kodProdejce='.CTLM_VDR_ID.'&typ=info',
 		'pojisteni' => 'http://www.cetelem.cz/webciselnik2.php?kodProdejce='.CTLM_VDR_ID.'&typ=pojisteni',
-		'kalkulator' => 'http://www.cetelem.cz/webkalkulator.php?kodProdejce='.CTLM_VDR_ID
+		'kalkulator' => 'http://www.cetelem.cz/webkalkulator.php?kodProdejce='.CTLM_VDR_ID,
+		'prijem_typ' => '../data/prijem_typ.xml'
 	),
 );
 /**
@@ -47,6 +50,12 @@ define ('CTLM_URL_INFO', $urls[CTLM_ENVIRONMENT]['info']);
  * @var string
  */
 define ('CTLM_URL_POJISTENI', $urls[CTLM_ENVIRONMENT]['pojisteni']);
+
+/**
+ * cesta ke sluzbe pro definice typu prijmu
+ * @var string
+ */
+define ('CTLM_URL_PRIJEM_TYP', $urls[CTLM_ENVIRONMENT]['prijem_typ']);
 
 require CTLM_CLASSES.'/CtlmCiselnik.php';
 

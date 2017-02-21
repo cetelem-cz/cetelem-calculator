@@ -20,6 +20,10 @@ Internet Eplorer 9+, Chrome, Firefox, Safari
 
 ## Changelog
 
+`1.04` - 1. Února 2017
+
+* Přidán jednoduchý kalkulátor pro výpočet doporučené výše úvěrového limitu 
+
 `1.03` - 1. Září 2016
 
 * Změna textací kvůli novému zákonu o úvěrech pro spotřebitele 

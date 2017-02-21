@@ -3,6 +3,7 @@
 require CTLM_CLASSES.'/CtlmBarem.php';
 require CTLM_CLASSES.'/CtlmLimit.php';
 require CTLM_CLASSES.'/CtlmPojisteni.php';
+require CTLM_CLASSES.'/CtlmPrijemTyp.php';
 
 Ctlm::$ciselnik = CtlmCiselnik::getInstance();
 
@@ -37,13 +38,20 @@ class CtlmCiselnik {
 	private $pojisteni = array();
 	
 	/**
+	 * ulozene druhy prijmu
+	 * @var CtlmDruhPrijem[]
+	 */
+	private $prijem_druh = array();
+	
+	/**
 	 * vraci instanci ciselniku
 	 * @return CtlmCiselnik
 	 */
 	public static function getInstance() 
 	{
-		if (self::$instance == null)
+		if (self::$instance == null) {
 			self::$instance = new self();
+		}
 		return self::$instance;
 	}
 	
@@ -57,8 +65,9 @@ class CtlmCiselnik {
 	 */
 	public function getInfo()
 	{
-		if (!empty($this->baremy))
+		if (!empty($this->baremy)) {
 			return $this->baremy;
+		}
 		
 		$this->baremy = array();
 		$data = file_get_contents(CTLM_URL_INFO);
@@ -119,8 +128,9 @@ class CtlmCiselnik {
 	 */
 	public function getBaremy() 
 	{
-		if (!empty($this->baremy))
+		if (!empty($this->baremy)) {
 			return $this->baremy;
+		}
 		
 		return $this->getInfo();
 	}
@@ -134,8 +144,9 @@ class CtlmCiselnik {
 	public function getBarem($id)
 	{
 		$baremy = $this->getBaremy();
-		if (!empty($baremy[$id]))
+		if (!empty($baremy[$id])) {
 			return $baremy[$id];
+		}
 	
 		return false;
 	}	
@@ -146,8 +157,9 @@ class CtlmCiselnik {
 	 */
 	public function getPojisteniList() 
 	{
-		if (!empty($this->pojisteni))
+		if (!empty($this->pojisteni)) {
 			return $this->pojisteni;
+		}
 		
 		$this->pojisteni = array();
 		$data = file_get_contents(CTLM_URL_POJISTENI);
@@ -175,11 +187,55 @@ class CtlmCiselnik {
 	public function getPojisteni($id)
 	{
 		$pojisteni = $this->getPojisteniList();
-		if (!empty($pojisteni[$id]))
+		if (!empty($pojisteni[$id])) {
 			return $pojisteni[$id];
+		}
 	
 		return false;
 	}
+	
+	/**
+	 * vrati pole definic typu prijmu
+	 * @return CtlmPrijemTyp[]
+	 */
+	public function getPrijemTypList()
+	{
+		if (!empty($this->prijem_typ)) {
+			return $this->prijem_typ;
+		}
+	
+		$this->prijem_typ = array();
+		$data = file_get_contents(CTLM_URL_PRIJEM_TYP);
+		$xml = simplexml_load_string($data);
+	
+		foreach ($xml as $prijem_typ) {
+			$id = (string) $prijem_typ->attributes()->id;
+			$this->prijem_typ[$id] = new CtlmPrijemTyp(
+				$id,
+				trim((string) $prijem_typ->titul),
+				trim((string) $prijem_typ->nasobek),
+				trim((string) $prijem_typ->minimum)
+			);
+		}
+	
+		return $this->prijem_typ;
+	}
+	
+	/**
+	 * vrati definici typu prijmu
+	 *
+	 * @param string $id
+	 * @return CtlmPrijemTyp
+	 */
+	public function getPrijemTyp($id)
+	{
+		$prijem_typ = $this->getPrijemTypList();
+		if (!empty($prijem_typ[$id])) {
+			return $prijem_typ[$id];
+		}
+	
+		return false;
+	}	
 	
 	/**
 	 * vrati baremy (a limity) ve formatu json
@@ -198,5 +254,10 @@ class CtlmCiselnik {
 	{
 		return json_encode($this->getPojisteniList());
 	}
+
 	
+	public function getJsonPrijemTyp()
+	{
+		return json_encode($this->getPrijemTypList());
+	}
 }

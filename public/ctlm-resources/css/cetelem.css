@@ -45,6 +45,10 @@ body {
   position: relative;
   z-index: 2;
 }
+.ctlm-calc .ctlm-info-law {
+  text-align: justify;
+  font-size: small;
+}
 .ctlm-calc .ctlm-info .logo {
   margin-bottom: 30px;
 }

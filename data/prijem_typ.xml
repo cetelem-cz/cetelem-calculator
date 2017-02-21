@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<webciselnik>
+	<prijem_typ id="P1">
+		<titul>Zaměstnanec</titul>
+		<nasobek>2</nasobek>
+		<minimum>24000</minimum>
+	</prijem_typ>
+	<prijem_typ id="P2">
+	<titul>Podnikatel</titul>
+		<nasobek>2</nasobek>
+		<minimum>27000</minimum>
+	</prijem_typ>
+	<prijem_typ id="P3">
+	<titul>Důchodce</titul>
+		<nasobek>2</nasobek>
+		<minimum>21000</minimum>
+	</prijem_typ>
+	<prijem_typ id="P4">
+	<titul>Mateřská dovolená</titul>
+		<nasobek>1.5</nasobek>
+		<minimum>17000</minimum>
+	</prijem_typ>
+	<prijem_typ id="P5">
+	<titul>Bez zaměstnání</titul>
+		<nasobek>0</nasobek>
+		<minimum>0</minimum>
+	</prijem_typ>
+</webciselnik>
